@@ -1,5 +1,7 @@
 # Cordex Tutorials
 
+[![deploy](https://github.com/WCRP-CORDEX/cordex-tutorials/actions/workflows/deploy.yml/badge.svg)](https://wcrp-cordex.github.io/cordex-tutorials)
+
 Interactive tutorials with Cordex datasets.
 
 ## Credits
