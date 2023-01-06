@@ -3,6 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
+  - python=3.9
   - cartopy
   - matplotlib-base
   - numpy
@@ -18,5 +19,6 @@ dependencies:
   - jupyter-book
   - intake-esm
   - ghp-import
+  - esgf-pyclient
   - pip:
     - git+https://github.com/euro-cordex/py-cordex.git  # latest py-cordex version
