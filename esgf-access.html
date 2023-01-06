@@ -400,16 +400,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">cf_xarray</span> <span class="k">as</span> <span class="nn">cfxr</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">pyesgf</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">pyesgf.logon</span> <span class="kn">import</span> <span class="n">LogonManager</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">pyesgf.search</span> <span class="kn">import</span> <span class="n">SearchConnection</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pyesgf&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3.1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>logged on: True
 </pre></div>
 </div>
 </div>
@@ -431,7 +425,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7ffdf0d1a940&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7fed2c05a700&gt;
 </pre></div>
 </div>
 <img alt="_images/esgf-access_5_1.png" src="_images/esgf-access_5_1.png" />
@@ -563,8 +557,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 474 ms, sys: 313 ms, total: 787 ms
-Wall time: 3.33 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 852 ms, sys: 62 ms, total: 914 ms
+Wall time: 11.3 s
 </pre></div>
 </div>
 </div>
@@ -576,8 +570,87 @@ Wall time: 3.33 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.11 s, sys: 189 ms, total: 1.3 s
-Wall time: 22.4 s
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">File</span> <span class="o">&lt;</span><span class="n">timed</span> <span class="n">exec</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span>
+
+<span class="nn">File /usr/share/miniconda/envs/cordex-tutorials/lib/python3.8/site-packages/xarray/core/dataarray.py:1091,</span> in <span class="ni">DataArray.compute</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1072</span> <span class="sd">&quot;&quot;&quot;Manually trigger loading of this array&#39;s data from disk or a</span>
+<span class="g g-Whitespace">   </span><span class="mi">1073</span><span class="sd"> remote source into memory and return a new array. The original is</span>
+<span class="g g-Whitespace">   </span><span class="mi">1074</span><span class="sd"> left unaltered.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1088</span><span class="sd"> dask.compute</span>
+<span class="g g-Whitespace">   </span><span class="mi">1089</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1090</span> <span class="n">new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1091</span> <span class="k">return</span> <span class="n">new</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /usr/share/miniconda/envs/cordex-tutorials/lib/python3.8/site-packages/xarray/core/dataarray.py:1065,</span> in <span class="ni">DataArray.load</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1047</span> <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">T_DataArray</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T_DataArray</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1048</span>     <span class="sd">&quot;&quot;&quot;Manually trigger loading of this array&#39;s data from disk or a</span>
+<span class="g g-Whitespace">   </span><span class="mi">1049</span><span class="sd">     remote source into memory and return this array.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1063</span><span class="sd">     dask.compute</span>
+<span class="g g-Whitespace">   </span><span class="mi">1064</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1065</span>     <span class="n">ds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_temp_dataset</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1066</span>     <span class="n">new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_from_temp_dataset</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1067</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_variable</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">_variable</span>
+
+<span class="nn">File /usr/share/miniconda/envs/cordex-tutorials/lib/python3.8/site-packages/xarray/core/dataset.py:738,</span> in <span class="ni">Dataset.load</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">735</span> <span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
+<span class="g g-Whitespace">    </span><span class="mi">737</span> <span class="c1"># evaluate all the dask arrays simultaneously</span>
+<span class="ne">--&gt; </span><span class="mi">738</span> <span class="n">evaluated_data</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="o">*</span><span class="n">lazy_data</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">740</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">lazy_data</span><span class="p">,</span> <span class="n">evaluated_data</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">741</span>     <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+
+<span class="nn">File /usr/share/miniconda/envs/cordex-tutorials/lib/python3.8/site-packages/dask/base.py:600,</span> in <span class="ni">compute</span><span class="nt">(traverse, optimize_graph, scheduler, get, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">597</span>     <span class="n">keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">__dask_keys__</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">598</span>     <span class="n">postcomputes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">__dask_postcompute__</span><span class="p">())</span>
+<span class="ne">--&gt; </span><span class="mi">600</span> <span class="n">results</span> <span class="o">=</span> <span class="n">schedule</span><span class="p">(</span><span class="n">dsk</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="nn">    601 return repack([f(r, *a) for r, (f, a)</span> in <span class="ni">zip</span><span class="nt">(results, postcomputes)])</span>
+
+<span class="nn">File /usr/share/miniconda/envs/cordex-tutorials/lib/python3.8/site-packages/dask/threaded.py:89,</span> in <span class="ni">get</span><span class="nt">(dsk, keys, cache, num_workers, pool, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pool</span><span class="p">,</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">Pool</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span>         <span class="n">pool</span> <span class="o">=</span> <span class="n">MultiprocessingPoolExecutor</span><span class="p">(</span><span class="n">pool</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">89</span> <span class="n">results</span> <span class="o">=</span> <span class="n">get_async</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="n">pool</span><span class="o">.</span><span class="n">submit</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="n">pool</span><span class="o">.</span><span class="n">_max_workers</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span>     <span class="n">dsk</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="n">keys</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="n">get_id</span><span class="o">=</span><span class="n">_thread_get_id</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="n">pack_exception</span><span class="o">=</span><span class="n">pack_exception</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span> <span class="c1"># Cleanup pools associated to dead threads</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="k">with</span> <span class="n">pools_lock</span><span class="p">:</span>
+
+<span class="nn">File /usr/share/miniconda/envs/cordex-tutorials/lib/python3.8/site-packages/dask/local.py:500,</span> in <span class="ni">get_async</span><span class="nt">(submit, num_workers, dsk, result, cache, get_id, rerun_exceptions_locally, pack_exception, raise_exception, callbacks, dumps, loads, chunksize, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">498</span> <span class="k">while</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;waiting&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;ready&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;running&quot;</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">499</span>     <span class="n">fire_tasks</span><span class="p">(</span><span class="n">chunksize</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">500</span>     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">res_info</span><span class="p">,</span> <span class="n">failed</span> <span class="ow">in</span> <span class="n">queue_get</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span>         <span class="k">if</span> <span class="n">failed</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">502</span>             <span class="n">exc</span><span class="p">,</span> <span class="n">tb</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">res_info</span><span class="p">)</span>
+
+<span class="nn">File /usr/share/miniconda/envs/cordex-tutorials/lib/python3.8/site-packages/dask/local.py:137,</span> in <span class="ni">queue_get</span><span class="nt">(q)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">def</span> <span class="nf">queue_get</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="k">return</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nn">File /usr/share/miniconda/envs/cordex-tutorials/lib/python3.8/queue.py:170,</span> in <span class="ni">Queue.get</span><span class="nt">(self, block, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span> <span class="k">elif</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span>     <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qsize</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">170</span>         <span class="bp">self</span><span class="o">.</span><span class="n">not_empty</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span> <span class="k">elif</span> <span class="n">timeout</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;timeout&#39; must be a non-negative number&quot;</span><span class="p">)</span>
+
+<span class="nn">File /usr/share/miniconda/envs/cordex-tutorials/lib/python3.8/threading.py:302,</span> in <span class="ni">Condition.wait</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">300</span> <span class="k">try</span><span class="p">:</span>    <span class="c1"># restore state no matter what (e.g., KeyboardInterrupt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">301</span>     <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">302</span>         <span class="n">waiter</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">303</span>         <span class="n">gotit</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span>     <span class="k">else</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
