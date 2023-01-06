@@ -10,6 +10,7 @@ dependencies:
   - regionmask
   - setuptools
   - xarray
+  - dask
   - cftime
   - netCDF4
   - xesmf
@@ -18,5 +19,6 @@ dependencies:
   - jupyter-book
   - intake-esm
   - ghp-import
+  - esgf-pyclient
   - pip:
     - git+https://github.com/euro-cordex/py-cordex.git  # latest py-cordex version
