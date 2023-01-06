@@ -43,6 +43,9 @@ jobs:
           mamba env update -f $CONDA_ENV_FILE
       # Build the book
       - name: Build the book
+        env:
+          ESGF_USER: ${{ secrets.ESGF_USER }}
+          ESGF_PASSWORD: ${{ secrets.ESGF_PASSWORD }}
         shell: bash -l {0}
         run: |
           jupyter-book build tutorials
