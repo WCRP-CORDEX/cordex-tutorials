@@ -32,11 +32,6 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-%%time
-# from dask.diagnostics import ProgressBar
-
-# with ProgressBar():
-#    tas_change_regional_ = tas_change_regional.compute()
-tas_change_regional_ = tas_change_regional.compute()
+%time mean = ds.tas.groupby('time.year').mean('time').cf.mean(('X', 'Y')).compute()
 -------------------
 
