@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'esgf-access';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Regional means" href="regional.html" />
+    <link rel="next" title="AWS Access" href="aws-access.html" />
     <link rel="prev" title="Cordex domains" href="domains.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -158,6 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="domains.html">Cordex domains</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Accessing CORDEX datasets from ESGF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws-access.html">AWS Access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regional.html">Regional means</a></li>
 </ul>
 
@@ -401,9 +402,10 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+
 <span class="kn">import</span> <span class="nn">cf_xarray</span> <span class="k">as</span> <span class="nn">cfxr</span>
 <span class="kn">import</span> <span class="nn">pyesgf</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">from</span> <span class="nn">pyesgf.logon</span> <span class="kn">import</span> <span class="n">LogonManager</span>
 <span class="kn">from</span> <span class="nn">pyesgf.search</span> <span class="kn">import</span> <span class="n">SearchConnection</span>
 
@@ -463,7 +465,7 @@ context: &lt;!--^ set page scope variables --&gt;&lt;!DOCTYPE HTML PUBLIC &quot;
 <span class="ne">---&gt; </span><span class="mi">56</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 <span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
-<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;http://esgf1.dkrz.de/thredds/dodsC/cordex/cordex/output/EUR-11/GERICS/ECMWF-ERAINT/evaluation/r0i0p0/GERICS-REMO2015/v1/fx/orog/v20180813/orog_EUR-11_ECMWF-ERAINT_evaluation_r0i0p0_GERICS-REMO2015_v1_fx.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;8f7011f5-d6d0-41e8-97ce-734e43ece00f&#39;]
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;http://esgf1.dkrz.de/thredds/dodsC/cordex/cordex/output/EUR-11/GERICS/ECMWF-ERAINT/evaluation/r0i0p0/GERICS-REMO2015/v1/fx/orog/v20180813/orog_EUR-11_ECMWF-ERAINT_evaluation_r0i0p0_GERICS-REMO2015_v1_fx.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;0c895e08-2f0a-448e-94bb-f64da264522e&#39;]
 
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
@@ -588,8 +590,8 @@ context: &lt;!--^ set page scope variables --&gt;&lt;!DOCTYPE HTML PUBLIC &quot;
 <p>Here, we use the <a class="reference external" href="https://esgf.github.io/esg-search/ESGF_Search_RESTful_API.html">ESGF search API</a> to collect URLs automatically based on global attributes of the CORDEX datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">numpy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 
 
 <span class="k">def</span> <span class="nf">parse_urls</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
@@ -770,11 +772,11 @@ context: &lt;!--^ set page scope variables --&gt;&lt;!DOCTYPE HTML PUBLIC &quot;
       </div>
     </a>
     <a class="right-next"
-       href="regional.html"
+       href="aws-access.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Regional means</p>
+        <p class="prev-next-title">AWS Access</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

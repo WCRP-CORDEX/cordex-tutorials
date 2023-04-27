@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'regional';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Accessing CORDEX datasets from ESGF" href="esgf-access.html" />
+    <link rel="prev" title="AWS Access" href="aws-access.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -157,6 +157,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="domains.html">Cordex domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="esgf-access.html">Accessing CORDEX datasets from ESGF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws-access.html">AWS Access</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Regional means</a></li>
 </ul>
 
@@ -400,10 +401,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
 <span class="kn">import</span> <span class="nn">cf_xarray</span> <span class="k">as</span> <span class="nn">cfxr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pyesgf</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">from</span> <span class="nn">pyesgf.logon</span> <span class="kn">import</span> <span class="n">LogonManager</span>
 <span class="kn">from</span> <span class="nn">pyesgf.search</span> <span class="kn">import</span> <span class="n">SearchConnection</span>
 
@@ -468,7 +470,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
     <span class="n">hist_urls</span> <span class="o">+</span> <span class="n">rcp85_urls</span><span class="p">,</span>
     <span class="n">chunks</span><span class="o">=</span><span class="p">{},</span>
@@ -498,7 +500,7 @@ context: &lt;!--^ set page scope variables --&gt;&lt;!DOCTYPE HTML PUBLIC &quot;
 <span class="ne">---&gt; </span><span class="mi">56</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 <span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
-<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;http://esgf1.dkrz.de/thredds/dodsC/cordex-reklies/output/EUR-11/CLMcom/MIROC-MIROC5/historical/r1i1p1/CLMcom-CCLM4-8-17/v1/mon/tas/v20171121/tas_EUR-11_MIROC-MIROC5_historical_r1i1p1_CLMcom-CCLM4-8-17_v1_mon_195001-195012.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;f4b71785-41e1-43d6-9c66-089ccc1c1118&#39;]
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;http://esgf1.dkrz.de/thredds/dodsC/cordex-reklies/output/EUR-11/CLMcom/MIROC-MIROC5/historical/r1i1p1/CLMcom-CCLM4-8-17/v1/mon/tas/v20171121/tas_EUR-11_MIROC-MIROC5_historical_r1i1p1_CLMcom-CCLM4-8-17_v1_mon_195001-195012.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;225c26d8-7c71-42aa-a268-4d40aaf63e34&#39;]
 
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
@@ -843,12 +845,12 @@ context: &lt;!--^ set page scope variables --&gt;&lt;!DOCTYPE HTML PUBLIC &quot;
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="esgf-access.html"
+       href="aws-access.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Accessing CORDEX datasets from ESGF</p>
+        <p class="prev-next-title">AWS Access</p>
       </div>
     </a>
 </div></div>
