@@ -1,25 +1,28 @@
 Traceback (most recent call last):
   File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/nbclient/client.py", line 1204, in execute
+  File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/nbclient/client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/nbclient/util.py", line 84, in wrapped
-    return just_run(coro(*args, **kwargs))
-  File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/nbclient/util.py", line 62, in just_run
-    return loop.run_until_complete(coro)
+  File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
   File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
     return future.result()
-  File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/nbclient/client.py", line 663, in async_execute
+  File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/nbclient/client.py", line 965, in async_execute_cell
+  File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/nbclient/client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+  File "/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 ds = xr.open_dataset(
     "http://esgf1.dkrz.de/thredds/dodsC/cordex/cordex/output/EUR-11/GERICS/ECMWF-ERAINT/evaluation/r0i0p0/GERICS-REMO2015/v1/fx/orog/v20180813/orog_EUR-11_ECMWF-ERAINT_evaluation_r0i0p0_GERICS-REMO2015_v1_fx.nc"
 )
+------------------
+
+----- stderr -----
+syntax error, unexpected WORD_WORD, expecting SCAN_ATTR or SCAN_DATASET or SCAN_ERROR
+context: <!--^ set page scope variables --><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head>  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />    <!-- page title -->  <title>OpenID Login Page</title>    <!-- common <head> content -->  <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/reset-fonts-grids/reset-fonts-grids.css" /><link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/assets/skins/sam/skin.css" /><link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/container/assets/skins/sam/container.css" /><link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/button/assets/skins/sam/button.css" /><script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/yahoo/yahoo-min.js" type="text/javascript"></script><script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/event/event-min.js" type="text/javascript"></script><script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/json/json-min.js" type="text/javascript"></script><script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/get/get-min.js" type="text/javascript"></script><script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/utilities/utilities.js" type="text/javascript"></script> <script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/container/container-min.js" type="text/javascript"></script><script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/element/element-min.js" type="text/javascript"></script><script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/button/button-min.js" type="text/javascript"></script><script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js" type="text/javascript"></script> <script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/animation/animation-min.js" type="text/javascript"></script> <script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/connection/connection-min.js" type="text/javascript"></script> <script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/datasource/datasource-min.js" type="text/javascript"></script> <script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/dragdrop/dragdrop-min.js" type="text/javascript"></script><script src="https://ajax.googleapis.com/ajax/libs/yui/2.9.0/build/datatable/datatable-min.js" type="text/javascript"></script> <link rel="stylesheet" type="text/css" href="/esg-orp/themes/base.css" />    <!-- page specific javascript -->  <!-- automatic redirect if "openid" parameter is detected -->    </head>  <body class="yui-skin-sam">   <table align="center" width="900px">     <tr><td><style type="text/css">#header { background: #FFFFFF; color: #ffc; overflow: hidden; height: 80px; margin: 0px; padding: 0px;}#logo_esgf { float: left; background: #FFFFFF; margin-top: 0px; padding-bottom: 0px;}#logo_institution { float: right; background: #FFFFFF; margin-top: 0px; padding-bottom: 0px;}</style><div id="header"> <div id="logo_esgf"> <img src='images/esgf.png' style="height:76px; padding:2px" /> </div> <div id="logo_institution">     </div></div></td></tr>   <tr><td><hr class="line"/></td></tr>   <tr><td><h1>Data Access Login</h1>     <p/>&nbsp;<p/>The following URL requires authentication: <br/><b>http://esgf1.dkrz.de/thredds/dodsC/cordex/cordex/output/EUR-11/GERICS/ECMWF-ERAINT/evaluation/r0i0p0/GERICS-REMO2015/v1/fx/orog/v20180813/orog_EUR-11_ECMWF-ERAINT_evaluation_r0i0p0_GERICS-REMO2015_v1_fx.nc.dds</b><p>&nbsp;</p>Please type in your OpenID URL at the OpenID prompt below or select your home OpenID Provider from one of the options provided in the drop-down list<!-- user is NOT authenticated --><link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"><script src="//code.jquery.com/jquery-1.10.2.js"></script><script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script><link rel="stylesheet" href="/resources/demos/style.css"><!-- kltsa 13/08/2014 : : A select element with auto complete  (Functionality from : http://jqueryui.com/autocomplete/#combobox). --><style>.custom-combobox { position: relative; display: inline-block; text-align:left;}.custom-combobox-toggle { position: absolute; top: 0; bottom: 0; margin-left: 0px; padding: 0; /* support: IE7 */ *height: 2.7em; *top: 0.1em; text-align:left;}.custom-combobox-input { top : 10 margin: 10; text-align:left; padding: 0.5em; width: 600px; height: 16.8px; float:left;}</style>      <script language="javascript"> (function($) {  $    .widget(      "custom.combobox",      {       _create : function() {        this.wrapper = $("<span>").addClass(          "custom-combobox").insertAfter(          this.element);        this.element.hide();        this._createAutocomplete();        this._createShowAllButton();       },       _createAutocomplete : function() {        var selected = this.element          .children(":selected"), value = selected          .val() ? selected.text() : "";        this.input = $("<input>")          .appendTo(this.wrapper)          .val(value)          .attr("title", "")          .addClass(            "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left")          .autocomplete({           delay : 0,           minLength : 0,           source : $.proxy(this, "_source")          }).tooltip({           tooltipClass : "ui-state-highlight"          });        this._on(this.input, {         autocompleteselect : function(event, ui) {          ui.item.option.selected = true;          this._trigger("select", event, {           item : ui.item.option          });         },         autocompletechange : "_removeIfInvalid"        });       },       _createShowAllButton : function() {        var input = this.input, wasOpen = false;        $("<a>")          .attr("tabIndex", -1)          .attr("title", "Show All Items")          .tooltip()          .appendTo(this.wrapper)          .button(            {             icons : {              primary : "ui-icon-triangle-1-s"             },             text : false            })          .removeClass("ui-corner-all")          .addClass(            "custom-combobox-toggle ui-corner-right")          .mousedown(            function() {             wasOpen = input               .autocomplete(                 "widget")               .is(":visible");            }).click(function() {           input.focus();           // Close if already visible           if (wasOpen) {            return;           }           // Pass empty string as value to search for, displaying all results           input.autocomplete("search", "");          });       },       _source : function(request, response) {        var matcher = new RegExp($.ui.autocomplete          .escapeRegex(request.term), "i");        response(this.element          .children("option")          .map(            function() {             var text = $(this).text();             if (this.value               && (!request.term || matcher                 .test(text)))              return {               label : text,               value : text,               option : this              };            }));       },       _removeIfInvalid : function(event, ui) {        // Selected an item, nothing to do        if (ui.item) {         return;        }        // Search for a match (case-insensitive)        var value = this.input.val(), valueLowerCase = value          .toLowerCase(), valid = false;        this.element          .children("option")          .each(            function() {             if ($(this).text()               .toLowerCase() === valueLowerCase) {              this.selected = valid = true;              return false;             }            });        // Found a match, nothing to do        if (valid) {         return;        }        // Remove invalid value        this.input.val(value).attr(          "title",          "\"" + value            + "\" didn't match any item.")          .tooltip("open");        /* kltsa 15/08/2014 : if option does not exists, add it.*/        select = document          .getElementById('openid_identifier');        var opt = document.createElement('option');        opt.value = value;        opt.innerHTML = value;        select.appendChild(opt);        select.value = value;        this.selected = valid = true;        return false;        //this.element.val("");        this._delay(function() {         this.input.tooltip("close").attr("title",           "");        }, 5500);        this.input.autocomplete("instance").term = "";       },       _destroy : function() {        this.wrapper.remove();        this.element.show();       }      }); })(jQuery); $(function() {  $("#openid_identifier").combobox();   });</script><p/>&nbsp;<p/><form method="post" action="/esg-orp/j_spring_openid_security_check.htm"><script language="javascript">function sanitize() { $("#SubmitButton").focus();  openidElement = document.getElementById("openid_identifier"); openid = openidElement.value; openid = openid.replace("http:","https:") .replace(/[\>\<"'\&$()\[\]\{\}%]/gi,'_')  .replace(/^\s*/, '').replace(/\s*$/, ''); openidElement.value = openid;}</script>    <table align="center"><tr><td><div class="panel"><table border="0" align="center"><caption>Status: not logged-in</caption><tr><td align="right" valign="middle"><img src='/esg-orp/themes/openid.png' width="80" /></td><td><table><tr><td align="right" class="required">OpenID</td><td align="left" WIDTH="650"><select name="openid_identifier" id="openid_identifier"> <option value=https://></option> <option value=https://esgf-node.llnl.gov/esgf-idp/openid/>DOE Lawrence Livermore National Laboratory (LLNL)</option> <option value=https://esgf.nccs.nasa.gov/esgf-idp/openid/>NASA Center for Climate Simulation (NCCS)</option> <option value=https://esgdata.gfdl.noaa.gov/esgf-idp/openid/>NOAA Geophysical Fluid Dynamics Laboratory (GFDL)</option> <option value=https://esgf.nci.org.au/esgf-idp/openid/>National Computational Infrastructure (NCI)</option> <option value=https://ceda.ac.uk/openid/>Centre for Environmental Data Analysis (CEDA)</option> <option value=https://esgf-node.ipsl.upmc.fr/esgf-idp/openid/>Institut Pierre Simon Laplace (IPSL)</option> <option value=https://esg-dn1.nsc.liu.se/esgf-idp/openid/>National Supercomputer Center at Linkoping University (NSC-LIU)</option> <option value=https://esgf-data.dkrz.de/esgf-idp/openid/>German Climate Computing Centre (DKRZ)</option></select></td><td align="center"><input type="submit" value="GO" style="height:30px; width:50px" id="SubmitButton" onclick="javascript:sanitize()"/></td>            </tr><tr><td align="center" colspan="4"><input type="checkbox" name="rememberOpenid" checked="checked"/> <span class="highlight">Remember my OpenID</span> on this computer</td></tr>             </table></td></tr></table></div></td></tr></table></form>  <br>        <p/>&nbsp;<p/>After logging in, you will be redirected to: <br/><b>http://esgf1.dkrz.de/thredds/dodsC/cordex/cordex/output/EUR-11/GERICS/ECMWF-ERAINT/evaluation/r0i0p0/GERICS-REMO2015/v1/fx/orog/v20180813/orog_EUR-11_ECMWF-ERAINT_evaluation_r0i0p0_GERICS-REMO2015_v1_fx.nc.dds</b><p/>&nbsp;<p/></td></tr>   <tr><td></td></tr>    </table>   </body> </html>
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
@@ -34,7 +37,7 @@ File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages
 [0;32m---> 56[0m     value [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_cache[49m[43m[[49m[43mkey[49m[43m][49m
 [1;32m     57[0m     [38;5;28mself[39m[38;5;241m.[39m_cache[38;5;241m.[39mmove_to_end(key)
 
-[0;31mKeyError[0m: [<class 'netCDF4._netCDF4.Dataset'>, ('http://esgf1.dkrz.de/thredds/dodsC/cordex/cordex/output/EUR-11/GERICS/ECMWF-ERAINT/evaluation/r0i0p0/GERICS-REMO2015/v1/fx/orog/v20180813/orog_EUR-11_ECMWF-ERAINT_evaluation_r0i0p0_GERICS-REMO2015_v1_fx.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '9344280e-bd1a-4cb3-93be-ea6ccb389d16']
+[0;31mKeyError[0m: [<class 'netCDF4._netCDF4.Dataset'>, ('http://esgf1.dkrz.de/thredds/dodsC/cordex/cordex/output/EUR-11/GERICS/ECMWF-ERAINT/evaluation/r0i0p0/GERICS-REMO2015/v1/fx/orog/v20180813/orog_EUR-11_ECMWF-ERAINT_evaluation_r0i0p0_GERICS-REMO2015_v1_fx.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '8f7011f5-d6d0-41e8-97ce-734e43ece00f']
 
 During handling of the above exception, another exception occurred:
 
@@ -44,83 +47,83 @@ Cell [0;32mIn[2], line 1[0m
 [1;32m      2[0m [43m    [49m[38;5;124;43m"[39;49m[38;5;124;43mhttp://esgf1.dkrz.de/thredds/dodsC/cordex/cordex/output/EUR-11/GERICS/ECMWF-ERAINT/evaluation/r0i0p0/GERICS-REMO2015/v1/fx/orog/v20180813/orog_EUR-11_ECMWF-ERAINT_evaluation_r0i0p0_GERICS-REMO2015_v1_fx.nc[39;49m[38;5;124;43m"[39;49m
 [1;32m      3[0m [43m)[49m
 
-File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/api.py:526[0m, in [0;36mopen_dataset[0;34m(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, inline_array, backend_kwargs, **kwargs)[0m
-[1;32m    514[0m decoders [38;5;241m=[39m _resolve_decoders_kwargs(
-[1;32m    515[0m     decode_cf,
-[1;32m    516[0m     open_backend_dataset_parameters[38;5;241m=[39mbackend[38;5;241m.[39mopen_dataset_parameters,
+File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/api.py:525[0m, in [0;36mopen_dataset[0;34m(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, inline_array, backend_kwargs, **kwargs)[0m
+[1;32m    513[0m decoders [38;5;241m=[39m _resolve_decoders_kwargs(
+[1;32m    514[0m     decode_cf,
+[1;32m    515[0m     open_backend_dataset_parameters[38;5;241m=[39mbackend[38;5;241m.[39mopen_dataset_parameters,
 [0;32m   (...)[0m
-[1;32m    522[0m     decode_coords[38;5;241m=[39mdecode_coords,
-[1;32m    523[0m )
-[1;32m    525[0m overwrite_encoded_chunks [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124moverwrite_encoded_chunks[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
-[0;32m--> 526[0m backend_ds [38;5;241m=[39m [43mbackend[49m[38;5;241;43m.[39;49m[43mopen_dataset[49m[43m([49m
-[1;32m    527[0m [43m    [49m[43mfilename_or_obj[49m[43m,[49m
-[1;32m    528[0m [43m    [49m[43mdrop_variables[49m[38;5;241;43m=[39;49m[43mdrop_variables[49m[43m,[49m
-[1;32m    529[0m [43m    [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mdecoders[49m[43m,[49m
-[1;32m    530[0m [43m    [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m,[49m
-[1;32m    531[0m [43m[49m[43m)[49m
-[1;32m    532[0m ds [38;5;241m=[39m _dataset_from_backend_dataset(
-[1;32m    533[0m     backend_ds,
-[1;32m    534[0m     filename_or_obj,
+[1;32m    521[0m     decode_coords[38;5;241m=[39mdecode_coords,
+[1;32m    522[0m )
+[1;32m    524[0m overwrite_encoded_chunks [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124moverwrite_encoded_chunks[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m--> 525[0m backend_ds [38;5;241m=[39m [43mbackend[49m[38;5;241;43m.[39;49m[43mopen_dataset[49m[43m([49m
+[1;32m    526[0m [43m    [49m[43mfilename_or_obj[49m[43m,[49m
+[1;32m    527[0m [43m    [49m[43mdrop_variables[49m[38;5;241;43m=[39;49m[43mdrop_variables[49m[43m,[49m
+[1;32m    528[0m [43m    [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mdecoders[49m[43m,[49m
+[1;32m    529[0m [43m    [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m,[49m
+[1;32m    530[0m [43m[49m[43m)[49m
+[1;32m    531[0m ds [38;5;241m=[39m _dataset_from_backend_dataset(
+[1;32m    532[0m     backend_ds,
+[1;32m    533[0m     filename_or_obj,
 [0;32m   (...)[0m
-[1;32m    542[0m     [38;5;241m*[39m[38;5;241m*[39mkwargs,
-[1;32m    543[0m )
-[1;32m    544[0m [38;5;28;01mreturn[39;00m ds
+[1;32m    541[0m     [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    542[0m )
+[1;32m    543[0m [38;5;28;01mreturn[39;00m ds
 
-File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:577[0m, in [0;36mNetCDF4BackendEntrypoint.open_dataset[0;34m(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, format, clobber, diskless, persist, lock, autoclose)[0m
-[1;32m    557[0m [38;5;28;01mdef[39;00m [38;5;21mopen_dataset[39m(
-[1;32m    558[0m     [38;5;28mself[39m,
-[1;32m    559[0m     filename_or_obj,
+File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:588[0m, in [0;36mNetCDF4BackendEntrypoint.open_dataset[0;34m(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, format, clobber, diskless, persist, lock, autoclose)[0m
+[1;32m    567[0m [38;5;28;01mdef[39;00m [38;5;21mopen_dataset[39m(  [38;5;66;03m# type: ignore[override]  # allow LSP violation, not supporting **kwargs[39;00m
+[1;32m    568[0m     [38;5;28mself[39m,
+[1;32m    569[0m     filename_or_obj: [38;5;28mstr[39m [38;5;241m|[39m os[38;5;241m.[39mPathLike[Any] [38;5;241m|[39m BufferedIOBase [38;5;241m|[39m AbstractDataStore,
 [0;32m   (...)[0m
-[1;32m    574[0m     autoclose[38;5;241m=[39m[38;5;28;01mFalse[39;00m,
-[1;32m    575[0m ):
-[1;32m    576[0m     filename_or_obj [38;5;241m=[39m _normalize_path(filename_or_obj)
-[0;32m--> 577[0m     store [38;5;241m=[39m [43mNetCDF4DataStore[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m
-[1;32m    578[0m [43m        [49m[43mfilename_or_obj[49m[43m,[49m
-[1;32m    579[0m [43m        [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m[43m,[49m
-[1;32m    580[0m [43m        [49m[38;5;28;43mformat[39;49m[38;5;241;43m=[39;49m[38;5;28;43mformat[39;49m[43m,[49m
-[1;32m    581[0m [43m        [49m[43mgroup[49m[38;5;241;43m=[39;49m[43mgroup[49m[43m,[49m
-[1;32m    582[0m [43m        [49m[43mclobber[49m[38;5;241;43m=[39;49m[43mclobber[49m[43m,[49m
-[1;32m    583[0m [43m        [49m[43mdiskless[49m[38;5;241;43m=[39;49m[43mdiskless[49m[43m,[49m
-[1;32m    584[0m [43m        [49m[43mpersist[49m[38;5;241;43m=[39;49m[43mpersist[49m[43m,[49m
-[1;32m    585[0m [43m        [49m[43mlock[49m[38;5;241;43m=[39;49m[43mlock[49m[43m,[49m
-[1;32m    586[0m [43m        [49m[43mautoclose[49m[38;5;241;43m=[39;49m[43mautoclose[49m[43m,[49m
-[1;32m    587[0m [43m    [49m[43m)[49m
-[1;32m    589[0m     store_entrypoint [38;5;241m=[39m StoreBackendEntrypoint()
-[1;32m    590[0m     [38;5;28;01mwith[39;00m close_on_error(store):
+[1;32m    585[0m     autoclose[38;5;241m=[39m[38;5;28;01mFalse[39;00m,
+[1;32m    586[0m ) [38;5;241m-[39m[38;5;241m>[39m Dataset:
+[1;32m    587[0m     filename_or_obj [38;5;241m=[39m _normalize_path(filename_or_obj)
+[0;32m--> 588[0m     store [38;5;241m=[39m [43mNetCDF4DataStore[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m
+[1;32m    589[0m [43m        [49m[43mfilename_or_obj[49m[43m,[49m
+[1;32m    590[0m [43m        [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m[43m,[49m
+[1;32m    591[0m [43m        [49m[38;5;28;43mformat[39;49m[38;5;241;43m=[39;49m[38;5;28;43mformat[39;49m[43m,[49m
+[1;32m    592[0m [43m        [49m[43mgroup[49m[38;5;241;43m=[39;49m[43mgroup[49m[43m,[49m
+[1;32m    593[0m [43m        [49m[43mclobber[49m[38;5;241;43m=[39;49m[43mclobber[49m[43m,[49m
+[1;32m    594[0m [43m        [49m[43mdiskless[49m[38;5;241;43m=[39;49m[43mdiskless[49m[43m,[49m
+[1;32m    595[0m [43m        [49m[43mpersist[49m[38;5;241;43m=[39;49m[43mpersist[49m[43m,[49m
+[1;32m    596[0m [43m        [49m[43mlock[49m[38;5;241;43m=[39;49m[43mlock[49m[43m,[49m
+[1;32m    597[0m [43m        [49m[43mautoclose[49m[38;5;241;43m=[39;49m[43mautoclose[49m[43m,[49m
+[1;32m    598[0m [43m    [49m[43m)[49m
+[1;32m    600[0m     store_entrypoint [38;5;241m=[39m StoreBackendEntrypoint()
+[1;32m    601[0m     [38;5;28;01mwith[39;00m close_on_error(store):
 
-File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:382[0m, in [0;36mNetCDF4DataStore.open[0;34m(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)[0m
-[1;32m    376[0m kwargs [38;5;241m=[39m [38;5;28mdict[39m(
-[1;32m    377[0m     clobber[38;5;241m=[39mclobber, diskless[38;5;241m=[39mdiskless, persist[38;5;241m=[39mpersist, [38;5;28mformat[39m[38;5;241m=[39m[38;5;28mformat[39m
-[1;32m    378[0m )
-[1;32m    379[0m manager [38;5;241m=[39m CachingFileManager(
-[1;32m    380[0m     netCDF4[38;5;241m.[39mDataset, filename, mode[38;5;241m=[39mmode, kwargs[38;5;241m=[39mkwargs
-[1;32m    381[0m )
-[0;32m--> 382[0m [38;5;28;01mreturn[39;00m [38;5;28;43mcls[39;49m[43m([49m[43mmanager[49m[43m,[49m[43m [49m[43mgroup[49m[38;5;241;43m=[39;49m[43mgroup[49m[43m,[49m[43m [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m[43m,[49m[43m [49m[43mlock[49m[38;5;241;43m=[39;49m[43mlock[49m[43m,[49m[43m [49m[43mautoclose[49m[38;5;241;43m=[39;49m[43mautoclose[49m[43m)[49m
+File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:389[0m, in [0;36mNetCDF4DataStore.open[0;34m(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)[0m
+[1;32m    383[0m kwargs [38;5;241m=[39m [38;5;28mdict[39m(
+[1;32m    384[0m     clobber[38;5;241m=[39mclobber, diskless[38;5;241m=[39mdiskless, persist[38;5;241m=[39mpersist, [38;5;28mformat[39m[38;5;241m=[39m[38;5;28mformat[39m
+[1;32m    385[0m )
+[1;32m    386[0m manager [38;5;241m=[39m CachingFileManager(
+[1;32m    387[0m     netCDF4[38;5;241m.[39mDataset, filename, mode[38;5;241m=[39mmode, kwargs[38;5;241m=[39mkwargs
+[1;32m    388[0m )
+[0;32m--> 389[0m [38;5;28;01mreturn[39;00m [38;5;28;43mcls[39;49m[43m([49m[43mmanager[49m[43m,[49m[43m [49m[43mgroup[49m[38;5;241;43m=[39;49m[43mgroup[49m[43m,[49m[43m [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m[43m,[49m[43m [49m[43mlock[49m[38;5;241;43m=[39;49m[43mlock[49m[43m,[49m[43m [49m[43mautoclose[49m[38;5;241;43m=[39;49m[43mautoclose[49m[43m)[49m
 
-File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:329[0m, in [0;36mNetCDF4DataStore.__init__[0;34m(self, manager, group, mode, lock, autoclose)[0m
-[1;32m    327[0m [38;5;28mself[39m[38;5;241m.[39m_group [38;5;241m=[39m group
-[1;32m    328[0m [38;5;28mself[39m[38;5;241m.[39m_mode [38;5;241m=[39m mode
-[0;32m--> 329[0m [38;5;28mself[39m[38;5;241m.[39mformat [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mds[49m[38;5;241m.[39mdata_model
-[1;32m    330[0m [38;5;28mself[39m[38;5;241m.[39m_filename [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mds[38;5;241m.[39mfilepath()
-[1;32m    331[0m [38;5;28mself[39m[38;5;241m.[39mis_remote [38;5;241m=[39m is_remote_uri([38;5;28mself[39m[38;5;241m.[39m_filename)
+File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:336[0m, in [0;36mNetCDF4DataStore.__init__[0;34m(self, manager, group, mode, lock, autoclose)[0m
+[1;32m    334[0m [38;5;28mself[39m[38;5;241m.[39m_group [38;5;241m=[39m group
+[1;32m    335[0m [38;5;28mself[39m[38;5;241m.[39m_mode [38;5;241m=[39m mode
+[0;32m--> 336[0m [38;5;28mself[39m[38;5;241m.[39mformat [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mds[49m[38;5;241m.[39mdata_model
+[1;32m    337[0m [38;5;28mself[39m[38;5;241m.[39m_filename [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mds[38;5;241m.[39mfilepath()
+[1;32m    338[0m [38;5;28mself[39m[38;5;241m.[39mis_remote [38;5;241m=[39m is_remote_uri([38;5;28mself[39m[38;5;241m.[39m_filename)
 
-File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:391[0m, in [0;36mNetCDF4DataStore.ds[0;34m(self)[0m
-[1;32m    389[0m [38;5;129m@property[39m
-[1;32m    390[0m [38;5;28;01mdef[39;00m [38;5;21mds[39m([38;5;28mself[39m):
-[0;32m--> 391[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_acquire[49m[43m([49m[43m)[49m
+File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:398[0m, in [0;36mNetCDF4DataStore.ds[0;34m(self)[0m
+[1;32m    396[0m [38;5;129m@property[39m
+[1;32m    397[0m [38;5;28;01mdef[39;00m [38;5;21mds[39m([38;5;28mself[39m):
+[0;32m--> 398[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_acquire[49m[43m([49m[43m)[49m
 
-File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:385[0m, in [0;36mNetCDF4DataStore._acquire[0;34m(self, needs_lock)[0m
-[1;32m    384[0m [38;5;28;01mdef[39;00m [38;5;21m_acquire[39m([38;5;28mself[39m, needs_lock[38;5;241m=[39m[38;5;28;01mTrue[39;00m):
-[0;32m--> 385[0m     [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39m_manager[38;5;241m.[39macquire_context(needs_lock) [38;5;28;01mas[39;00m root:
-[1;32m    386[0m         ds [38;5;241m=[39m _nc4_require_group(root, [38;5;28mself[39m[38;5;241m.[39m_group, [38;5;28mself[39m[38;5;241m.[39m_mode)
-[1;32m    387[0m     [38;5;28;01mreturn[39;00m ds
+File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/netCDF4_.py:392[0m, in [0;36mNetCDF4DataStore._acquire[0;34m(self, needs_lock)[0m
+[1;32m    391[0m [38;5;28;01mdef[39;00m [38;5;21m_acquire[39m([38;5;28mself[39m, needs_lock[38;5;241m=[39m[38;5;28;01mTrue[39;00m):
+[0;32m--> 392[0m     [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39m_manager[38;5;241m.[39macquire_context(needs_lock) [38;5;28;01mas[39;00m root:
+[1;32m    393[0m         ds [38;5;241m=[39m _nc4_require_group(root, [38;5;28mself[39m[38;5;241m.[39m_group, [38;5;28mself[39m[38;5;241m.[39m_mode)
+[1;32m    394[0m     [38;5;28;01mreturn[39;00m ds
 
 File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/contextlib.py:135[0m, in [0;36m_GeneratorContextManager.__enter__[0;34m(self)[0m
 [1;32m    133[0m [38;5;28;01mdel[39;00m [38;5;28mself[39m[38;5;241m.[39margs, [38;5;28mself[39m[38;5;241m.[39mkwds, [38;5;28mself[39m[38;5;241m.[39mfunc
 [1;32m    134[0m [38;5;28;01mtry[39;00m:
 [0;32m--> 135[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mnext[39;49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mgen[49m[43m)[49m
 [1;32m    136[0m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m:
-[1;32m    137[0m     [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([38;5;124m"[39m[38;5;124mgenerator didn[39m[38;5;124m'[39m[38;5;124mt yield[39m[38;5;124m"[39m) [38;5;28;01mfrom[39;00m [38;5;28mNone[39m
+[1;32m    137[0m     [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([38;5;124m"[39m[38;5;124mgenerator didn[39m[38;5;124m'[39m[38;5;124mt yield[39m[38;5;124m"[39m) [38;5;28;01mfrom[39;00m [38;5;28;01mNone[39;00m
 
 File [0;32m~/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/xarray/backends/file_manager.py:198[0m, in [0;36mCachingFileManager.acquire_context[0;34m(self, needs_lock)[0m
 [1;32m    195[0m [38;5;129m@contextlib[39m[38;5;241m.[39mcontextmanager
@@ -143,5 +146,4 @@ File [0;32msrc/netCDF4/_netCDF4.pyx:2449[0m, in [0;36mnetCDF4._netCDF4.Datase
 File [0;32msrc/netCDF4/_netCDF4.pyx:2012[0m, in [0;36mnetCDF4._netCDF4._ensure_nc_success[0;34m()[0m
 
 [0;31mOSError[0m: [Errno -77] NetCDF: Access failure: 'http://esgf1.dkrz.de/thredds/dodsC/cordex/cordex/output/EUR-11/GERICS/ECMWF-ERAINT/evaluation/r0i0p0/GERICS-REMO2015/v1/fx/orog/v20180813/orog_EUR-11_ECMWF-ERAINT_evaluation_r0i0p0_GERICS-REMO2015_v1_fx.nc'
-OSError: [Errno -77] NetCDF: Access failure: 'http://esgf1.dkrz.de/thredds/dodsC/cordex/cordex/output/EUR-11/GERICS/ECMWF-ERAINT/evaluation/r0i0p0/GERICS-REMO2015/v1/fx/orog/v20180813/orog_EUR-11_ECMWF-ERAINT_evaluation_r0i0p0_GERICS-REMO2015_v1_fx.nc'
 
