@@ -6,5 +6,6 @@ root: intro
 chapters:
 - file: domains
 - file: esgf-access
+- file: aws-access
 #- file: markdown
 #- file: notebooks
