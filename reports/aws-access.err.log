@@ -30,6 +30,6 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-eur11.topo.plot(cmap="terrain")
+%time mean = ds.tas.groupby("time.year").mean().mean(("rlon", "rlat")).compute()
 -------------------
 
