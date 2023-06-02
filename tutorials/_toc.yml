@@ -5,8 +5,6 @@ format: jb-book
 root: intro
 chapters:
 - file: domains
-- file: esgf-access
 - file: aws-access
-- file: regional
 #- file: markdown
 #- file: notebooks
