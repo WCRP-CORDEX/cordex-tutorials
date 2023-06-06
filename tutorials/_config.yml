@@ -16,6 +16,7 @@ execute:
   execute_notebooks: force
   exclude_patterns:
     - 'aws-access.ipynb'
+    - 'regional.ipynb'
 
 only_build_toc_files: true
 
