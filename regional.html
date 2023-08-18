@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Regional means &#8212; Cordex Tutorials</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -65,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="AWS Access" href="aws-access.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -396,7 +397,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="regional-means">
-<h1>Regional means<a class="headerlink" href="#regional-means" title="Permalink to this headline">#</a></h1>
+<h1>Regional means<a class="headerlink" href="#regional-means" title="Permalink to this heading">#</a></h1>
 <p>This notebook should demonstrate how CORDEX datasets can be used for looking at regional scales. This often involves masking and averaging over a limited area of the dataset, e.g., a country or city.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -468,7 +469,7 @@ document.write(`
 </div>
 </div>
 <section id="masking-with-regionmask">
-<h2>Masking with <code class="docutils literal notranslate"><span class="pre">regionmask</span></code><a class="headerlink" href="#masking-with-regionmask" title="Permalink to this headline">#</a></h2>
+<h2>Masking with <code class="docutils literal notranslate"><span class="pre">regionmask</span></code><a class="headerlink" href="#masking-with-regionmask" title="Permalink to this heading">#</a></h2>
 <p>We will use the python package <a class="reference external" href="https://regionmask.readthedocs.io">regionmask</a> to mask certain regions in the EURO-CORDEX domain and compute a mean for each region. This will give us a little more detailled regional information and how the warming depends on it. In this example, we will use the <a class="reference external" href="https://regionmask.readthedocs.io/en/stable/defined_scientific.html#prudence-regions">PRUDENCE regions</a> (European sub-areas for regional climate model output) which are often used for European climate studies. The PRUDENCE regions are included in regionmask. Let’s have a look at them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1062,7 +1063,7 @@ Attributes:
 </div>
 </section>
 <section id="regional-spatial-average">
-<h2>Regional spatial average<a class="headerlink" href="#regional-spatial-average" title="Permalink to this headline">#</a></h2>
+<h2>Regional spatial average<a class="headerlink" href="#regional-spatial-average" title="Permalink to this heading">#</a></h2>
 <p>Let’s compute a spatial average over each region to compare the changes between them. We will start a dask client and open up some real datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

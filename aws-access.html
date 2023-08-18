@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>AWS Access &#8212; Cordex Tutorials</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Regional means" href="regional.html" />
     <link rel="prev" title="Cordex domains" href="domains.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -401,7 +402,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="aws-access">
-<h1>AWS Access<a class="headerlink" href="#aws-access" title="Permalink to this headline">#</a></h1>
+<h1>AWS Access<a class="headerlink" href="#aws-access" title="Permalink to this heading">#</a></h1>
 <p>A growing number of CORDEX datasets is now available from AWS S3. In this examples, we will show how to access the datasets using an ESM collection and derive an ensemble mean.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2220,7 +2221,7 @@ Attributes: (12/26)
 </div>
 </div>
 <section id="open-an-esm-collection">
-<h2>Open an ESM collection<a class="headerlink" href="#open-an-esm-collection" title="Permalink to this headline">#</a></h2>
+<h2>Open an ESM collection<a class="headerlink" href="#open-an-esm-collection" title="Permalink to this heading">#</a></h2>
 <p>We can also use intake to open a collection of datasets into a dictionary. E.g., to open up all 2m temperature datasets, we search for them in the catalog:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3292,7 +3293,7 @@ Attributes: (12/45)
 </div>
 </section>
 <section id="investigate-regional-warming-in-the-entire-ensemble">
-<h2>Investigate regional warming in the entire ensemble<a class="headerlink" href="#investigate-regional-warming-in-the-entire-ensemble" title="Permalink to this headline">#</a></h2>
+<h2>Investigate regional warming in the entire ensemble<a class="headerlink" href="#investigate-regional-warming-in-the-entire-ensemble" title="Permalink to this heading">#</a></h2>
 <p>Let’s do it for the whole ensemble! We define a function to compute a simple yearly mean and a function that concatenates all yearly datasets into one ensemble dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3403,7 +3404,7 @@ Wall time: 2min 15s
 </div>
 </div>
 <section id="use-seaborn-for-statistical-plots">
-<h3>Use seaborn for statistical plots<a class="headerlink" href="#use-seaborn-for-statistical-plots" title="Permalink to this headline">#</a></h3>
+<h3>Use seaborn for statistical plots<a class="headerlink" href="#use-seaborn-for-statistical-plots" title="Permalink to this heading">#</a></h3>
 <p>These plots are nice but don’t really give some valuable statistical insight. However, we can easily convert our dataset to a pandas dataframe and use, e.g., seaborn for stastical plots:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3561,7 +3562,7 @@ Wall time: 2min 15s
 </section>
 </section>
 <section id="compute-the-change-in-the-rolling-yearly-mean">
-<h2>Compute the change in the rolling yearly mean<a class="headerlink" href="#compute-the-change-in-the-rolling-yearly-mean" title="Permalink to this headline">#</a></h2>
+<h2>Compute the change in the rolling yearly mean<a class="headerlink" href="#compute-the-change-in-the-rolling-yearly-mean" title="Permalink to this heading">#</a></h2>
 <p>Ususally, it’s easier to look at at rolling mean with a window size of a climate timescale, e.g., a decade. We can achieve this but we have to take care to fill the scenario datasets with historical data so that we don’t get a ‘gap’ in the data when computing the rolling mean. We can achive this by using xarrays index notation similar to pandas:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
