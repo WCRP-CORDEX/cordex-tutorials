@@ -13,7 +13,7 @@ Interactive tutorials with Cordex datasets.
 If you want to run the tutorials yourself, we recommend to install all dependencies in a fresh conda enviroment, e.g., using
 
 ```bash
-mamba env create -f environment.yml 
+mamba env create -f environment.yml
 ```
 
 ## Credits
