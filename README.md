@@ -7,6 +7,15 @@
 
 Interactive tutorials with Cordex datasets.
 
+
+## Installation
+
+If you want to run the tutorials yourself, we recommend to install all dependencies in a fresh conda enviroment, e.g., using
+
+```bash
+mamba env create -f environment.yml 
+```
+
 ## Credits
 
 This project is created using the excellent open source [Jupyter Book project](https://jupyterbook.org/) and the [executablebooks/cookiecutter-jupyter-book template](https://github.com/executablebooks/cookiecutter-jupyter-book).
