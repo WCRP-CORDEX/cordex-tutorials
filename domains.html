@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -36,10 +38,11 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -64,6 +67,7 @@
     <link rel="prev" title="Welcome to the CORDEX Tutorials!" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -79,19 +83,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -99,7 +92,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,8 +99,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -124,7 +116,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -154,21 +147,17 @@
     
     
     <img src="_static/WCRP-CORDEX-logo.png" class="logo__image only-light" alt="Cordex Tutorials - Home"/>
-    <script>document.write(`<img src="_static/WCRP-CORDEX-logo.png" class="logo__image only-dark" alt="Cordex Tutorials - Home"/>`);</script>
+    <img src="_static/WCRP-CORDEX-logo.png" class="logo__image only-dark pst-js-only" alt="Cordex Tutorials - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -368,24 +357,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -1557,9 +1538,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
@@ -1645,7 +1626,7 @@ body.vscode-dark {
 .xr-sections {
   padding-left: 0 !important;
   display: grid;
-  grid-template-columns: 150px auto auto 1fr 20px 20px;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
 }
 
 .xr-section-item {
@@ -1653,7 +1634,8 @@ body.vscode-dark {
 }
 
 .xr-section-item input {
-  display: none;
+  display: inline-block;
+  opacity: 0;
 }
 
 .xr-section-item input + label {
@@ -1663,6 +1645,10 @@ body.vscode-dark {
 .xr-section-item input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
 }
 
 .xr-section-item input:enabled + label:hover {
@@ -1938,7 +1924,7 @@ Data variables:
     rotated_latitude_longitude  int32 4B 0
     topo                        (rlat, rlon) float32 699kB 284.0 246.0 ... 509.0
 Attributes:
-    CORDEX_domain:  EUR-11</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-c2f37950-637f-4c2e-be6a-6b4ce42281b2' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-c2f37950-637f-4c2e-be6a-6b4ce42281b2' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>rlon</span>: 424</li><li><span class='xr-has-index'>rlat</span>: 412</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-4c9b6c82-2a10-454e-b75b-8007b8bf7ab7' class='xr-section-summary-in' type='checkbox'  checked><label for='section-4c9b6c82-2a10-454e-b75b-8007b8bf7ab7' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlon</span></div><div class='xr-var-dims'>(rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-28.38 -28.27 ... 18.05 18.16</div><input id='attrs-6941b10a-8004-4763-a81b-a79b033c24ed' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6941b10a-8004-4763-a81b-a79b033c24ed' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8e3a7b0f-7a54-4c9f-83a1-666b1384e627' class='xr-var-data-in' type='checkbox'><label for='data-8e3a7b0f-7a54-4c9f-83a1-666b1384e627' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>standard_name :</span></dt><dd>grid_longitude</dd><dt><span>long_name :</span></dt><dd>longitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([-28.375, -28.265, -28.155, ...,  17.935,  18.045,  18.155])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlat</span></div><div class='xr-var-dims'>(rlat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-23.38 -23.27 ... 21.73 21.84</div><input id='attrs-bc9c1a65-ffff-4e88-98db-f9a628d53920' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bc9c1a65-ffff-4e88-98db-f9a628d53920' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-482b0a9e-1b92-4172-99bf-72d59e0c9175' class='xr-var-data-in' type='checkbox'><label for='data-482b0a9e-1b92-4172-99bf-72d59e0c9175' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>standard_name :</span></dt><dd>grid_latitude</dd><dt><span>long_name :</span></dt><dd>latitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([-23.375, -23.265, -23.155, ...,  21.615,  21.725,  21.835])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-10.06 -9.964 ... 64.76 64.96</div><input id='attrs-d1778120-55ef-4e43-b486-4e7690b7781a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d1778120-55ef-4e43-b486-4e7690b7781a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6dba811c-fe7b-42a5-9e85-1125bf50a2eb' class='xr-var-data-in' type='checkbox'><label for='data-6dba811c-fe7b-42a5-9e85-1125bf50a2eb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([[-10.06387966,  -9.96388628,  -9.86380363, ...,  36.19872654,
+    CORDEX_domain:  EUR-11</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-c8eb841b-4409-4fad-bbe6-0d7980f89877' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-c8eb841b-4409-4fad-bbe6-0d7980f89877' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>rlon</span>: 424</li><li><span class='xr-has-index'>rlat</span>: 412</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-9bcb883b-4f9f-4711-b556-885d21df5ad9' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9bcb883b-4f9f-4711-b556-885d21df5ad9' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlon</span></div><div class='xr-var-dims'>(rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-28.38 -28.27 ... 18.05 18.16</div><input id='attrs-3b15c385-6237-4e93-b975-d3394838169a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3b15c385-6237-4e93-b975-d3394838169a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7fb65598-4260-4b98-a156-3f4572f51242' class='xr-var-data-in' type='checkbox'><label for='data-7fb65598-4260-4b98-a156-3f4572f51242' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>standard_name :</span></dt><dd>grid_longitude</dd><dt><span>long_name :</span></dt><dd>longitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([-28.375, -28.265, -28.155, ...,  17.935,  18.045,  18.155])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlat</span></div><div class='xr-var-dims'>(rlat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-23.38 -23.27 ... 21.73 21.84</div><input id='attrs-5745f024-0345-4eb1-84f2-c89b9b54816a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5745f024-0345-4eb1-84f2-c89b9b54816a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a2e2ec4d-3e0c-4357-b7d7-984ff1386f70' class='xr-var-data-in' type='checkbox'><label for='data-a2e2ec4d-3e0c-4357-b7d7-984ff1386f70' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>standard_name :</span></dt><dd>grid_latitude</dd><dt><span>long_name :</span></dt><dd>latitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([-23.375, -23.265, -23.155, ...,  21.615,  21.725,  21.835])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-10.06 -9.964 ... 64.76 64.96</div><input id='attrs-34079e54-0e65-4a65-8450-0768ad5d565c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-34079e54-0e65-4a65-8450-0768ad5d565c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9cb79bbd-4354-4e21-a068-ad3f32248017' class='xr-var-data-in' type='checkbox'><label for='data-9cb79bbd-4354-4e21-a068-ad3f32248017' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([[-10.06387966,  -9.96388628,  -9.86380363, ...,  36.19872654,
          36.30631294,  36.41382968],
        [-10.11099589, -10.01086154,  -9.91063756, ...,  36.23077703,
          36.33853934,  36.44623165],
@@ -1950,7 +1936,7 @@ Attributes:
        [-44.43028713, -44.29178077, -44.15274426, ...,  64.38488381,
          64.59063409,  64.79546746],
        [-44.59386389, -44.45552794, -44.31666067, ...,  64.55349992,
-         64.75940009,  64.96437667]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>21.99 22.03 22.07 ... 66.75 66.69</div><input id='attrs-f053322e-45b8-46f1-b331-6063fe3518a8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f053322e-45b8-46f1-b331-6063fe3518a8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-da43a79b-cac5-4dba-8678-b3f947091e81' class='xr-var-data-in' type='checkbox'><label for='data-da43a79b-cac5-4dba-8678-b3f947091e81' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>array([[21.98782876, 22.02783807, 22.06771602, ..., 25.1677739 ,
+         64.75940009,  64.96437667]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>21.99 22.03 22.07 ... 66.75 66.69</div><input id='attrs-3b3a8f39-e29f-4b05-b997-ec5d8e37ef90' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3b3a8f39-e29f-4b05-b997-ec5d8e37ef90' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-70f5eede-a805-4bf8-86f7-03fdcefda251' class='xr-var-data-in' type='checkbox'><label for='data-70f5eede-a805-4bf8-86f7-03fdcefda251' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>array([[21.98782876, 22.02783807, 22.06771602, ..., 25.1677739 ,
         25.14109405, 25.11426239],
        [22.08878725, 22.1288583 , 22.16879786, ..., 25.27388366,
         25.24715843, 25.22028117],
@@ -1962,7 +1948,7 @@ Attributes:
        [60.12974984, 60.20521265, 60.28057952, ..., 66.72632651,
         66.66454929, 66.60256233],
        [60.20376337, 60.27933874, 60.35481882, ..., 66.81394504,
-        66.75199541, 66.68983654]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ba7a14bf-89d4-4b85-ac41-d38a86bca8c4' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ba7a14bf-89d4-4b85-ac41-d38a86bca8c4' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>rotated_latitude_longitude</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-fb1ddcaf-f62a-47d9-b510-945711a333bf' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fb1ddcaf-f62a-47d9-b510-945711a333bf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d0797975-9814-4cfd-9768-c9534a6740f5' class='xr-var-data-in' type='checkbox'><label for='data-d0797975-9814-4cfd-9768-c9534a6740f5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>grid_mapping_name :</span></dt><dd>rotated_latitude_longitude</dd><dt><span>grid_north_pole_latitude :</span></dt><dd>39.25</dd><dt><span>grid_north_pole_longitude :</span></dt><dd>-162.0</dd><dt><span>north_pole_grid_longitude :</span></dt><dd>0.0</dd></dl></div><div class='xr-var-data'><pre>array(0, dtype=int32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>topo</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>284.0 246.0 246.0 ... 509.0 509.0</div><input id='attrs-0a043233-ab29-4d31-93ad-51123f3caf5e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0a043233-ab29-4d31-93ad-51123f3caf5e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f5e94cda-674b-4f8f-877c-d6c1b612b665' class='xr-var-data-in' type='checkbox'><label for='data-f5e94cda-674b-4f8f-877c-d6c1b612b665' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>coordinates :</span></dt><dd>lat lon</dd><dt><span>grid_mapping :</span></dt><dd>rotated_latitude_longitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([[ 2.8400000e+02,  2.4600000e+02,  2.4600000e+02, ...,
+        66.75199541, 66.68983654]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-7e52307e-3cd5-4d3e-aabf-035ec0c4d3dc' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7e52307e-3cd5-4d3e-aabf-035ec0c4d3dc' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>rotated_latitude_longitude</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-99ec6484-74fb-44b2-bf1c-5266b69eb6ec' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-99ec6484-74fb-44b2-bf1c-5266b69eb6ec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b4e57073-141d-423b-a771-0921a117acd0' class='xr-var-data-in' type='checkbox'><label for='data-b4e57073-141d-423b-a771-0921a117acd0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>grid_mapping_name :</span></dt><dd>rotated_latitude_longitude</dd><dt><span>grid_north_pole_latitude :</span></dt><dd>39.25</dd><dt><span>grid_north_pole_longitude :</span></dt><dd>-162.0</dd><dt><span>north_pole_grid_longitude :</span></dt><dd>0.0</dd></dl></div><div class='xr-var-data'><pre>array(0, dtype=int32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>topo</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>284.0 246.0 246.0 ... 509.0 509.0</div><input id='attrs-be7c9b14-f34a-4606-9e44-8916af215d7a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-be7c9b14-f34a-4606-9e44-8916af215d7a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-85228ad3-38f0-4aaa-a43b-550b44842796' class='xr-var-data-in' type='checkbox'><label for='data-85228ad3-38f0-4aaa-a43b-550b44842796' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>coordinates :</span></dt><dd>lat lon</dd><dt><span>grid_mapping :</span></dt><dd>rotated_latitude_longitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([[ 2.8400000e+02,  2.4600000e+02,  2.4600000e+02, ...,
         -1.6953334e+03, -1.6953334e+03, -1.6953334e+03],
        [ 2.8066666e+02,  2.8066666e+02,  2.4600000e+02, ...,
         -1.6953334e+03, -1.6953334e+03, -1.6953334e+03],
@@ -1974,17 +1960,17 @@ Attributes:
        [-6.6666669e-01, -6.6666669e-01, -6.6666669e-01, ...,
          5.3600000e+02,  5.0900000e+02,  5.0900000e+02],
        [ 2.7966666e+02, -6.6666669e-01, -6.6666669e-01, ...,
-         5.0900000e+02,  5.0900000e+02,  5.0900000e+02]], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-84277253-deb2-4018-af44-03df3df519e6' class='xr-section-summary-in' type='checkbox'  ><label for='section-84277253-deb2-4018-af44-03df3df519e6' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>rlon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-87427327-402b-4bff-9ff8-f18a1a83615a' class='xr-index-data-in' type='checkbox'/><label for='index-87427327-402b-4bff-9ff8-f18a1a83615a' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-28.375, -28.265, -28.155, -28.045, -27.935, -27.825, -27.715, -27.605,
+         5.0900000e+02,  5.0900000e+02,  5.0900000e+02]], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c06578f8-cfa9-449a-8b12-a147a150e3e0' class='xr-section-summary-in' type='checkbox'  ><label for='section-c06578f8-cfa9-449a-8b12-a147a150e3e0' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>rlon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-59b22f6e-71c4-4a31-bbaa-42cb09caf5a8' class='xr-index-data-in' type='checkbox'/><label for='index-59b22f6e-71c4-4a31-bbaa-42cb09caf5a8' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-28.375, -28.265, -28.155, -28.045, -27.935, -27.825, -27.715, -27.605,
        -27.495, -27.385,
        ...
         17.165,  17.275,  17.385,  17.495,  17.605,  17.715,  17.825,  17.935,
         18.045,  18.155],
-      dtype=&#x27;float64&#x27;, name=&#x27;rlon&#x27;, length=424))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rlat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-3175ccb1-fb9c-4018-9509-3dd242d66b6f' class='xr-index-data-in' type='checkbox'/><label for='index-3175ccb1-fb9c-4018-9509-3dd242d66b6f' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-23.375, -23.265, -23.155, -23.045, -22.935, -22.825, -22.715, -22.605,
+      dtype=&#x27;float64&#x27;, name=&#x27;rlon&#x27;, length=424))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rlat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-2323fdef-bc5e-45e2-82c2-24fe5632c688' class='xr-index-data-in' type='checkbox'/><label for='index-2323fdef-bc5e-45e2-82c2-24fe5632c688' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-23.375, -23.265, -23.155, -23.045, -22.935, -22.825, -22.715, -22.605,
        -22.495, -22.385,
        ...
         20.845,  20.955,  21.065,  21.175,  21.285,  21.395,  21.505,  21.615,
         21.725,  21.835],
-      dtype=&#x27;float64&#x27;, name=&#x27;rlat&#x27;, length=412))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-121e5b05-339a-43b3-a92b-9b0dc161dcd1' class='xr-section-summary-in' type='checkbox'  checked><label for='section-121e5b05-339a-43b3-a92b-9b0dc161dcd1' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>CORDEX_domain :</span></dt><dd>EUR-11</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;float64&#x27;, name=&#x27;rlat&#x27;, length=412))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0c50ff5a-9cdd-407e-b7b0-d92e32adff2b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-0c50ff5a-9cdd-407e-b7b0-d92e32adff2b' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>CORDEX_domain :</span></dt><dd>EUR-11</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">dummy='topo'</span></code> argument means, we want a dummy variable in the dataset to see how the domain looks like. For the dummy topography, we use the <code class="docutils literal notranslate"><span class="pre">cdo</span> <span class="pre">topo</span></code> operator in the background. So maybe you have to install <code class="docutils literal notranslate"><span class="pre">python-cdo</span></code>, e.g., <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">python-cdo</span></code>. Working with xarray datasets means, that we can use all the nice functions of xarray including plotting. The latest versions of <code class="docutils literal notranslate"><span class="pre">py-cordex</span></code> also come with an xarray accessor that allows you, e.g., to get a quick overview of the domain, using, e.g.</p>
 <div class="cell docutils container">
@@ -2000,22 +1986,22 @@ Attributes:
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cartopy/mpl/feature_artist.py:144: UserWarning: facecolor will have no effect as it has been defined as &quot;never&quot;.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cartopy/mpl/feature_artist.py:144: UserWarning: facecolor will have no effect as it has been defined as &quot;never&quot;.
   warnings.warn(&#39;facecolor will have no effect as it has been &#39;
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;GeoAxes: &gt;
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_physical/ne_110m_coastline.zip
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_physical/ne_110m_coastline.zip
   warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_boundary_lines_land.zip
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_boundary_lines_land.zip
   warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
 </pre></div>
 </div>
-<img alt="_images/218aba2a6d990be5fa4e3210e911b8d287d228988476ba5a11b08e9d28902fc3.png" src="_images/218aba2a6d990be5fa4e3210e911b8d287d228988476ba5a11b08e9d28902fc3.png" />
+<img alt="_images/52a93309dd525b6121752c8955adc5994b0ac8b0ad5b48ccac39393c5bd0113a.png" src="_images/52a93309dd525b6121752c8955adc5994b0ac8b0ad5b48ccac39393c5bd0113a.png" />
 </div>
 </div>
 <p>We can also use the dummy topography to plot an overview:</p>
@@ -2026,10 +2012,10 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x11ef3d660&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x1401d16f0&gt;
 </pre></div>
 </div>
-<img alt="_images/dc45edbd46a9a29095f45a969a920444593bcdc80e4d2889ef773f6d1e9f262f.png" src="_images/dc45edbd46a9a29095f45a969a920444593bcdc80e4d2889ef773f6d1e9f262f.png" />
+<img alt="_images/d6fc4e5415901cb07ebdcb5b7387fc33e12e5ea94fb75abd24ed4a1533b4d607.png" src="_images/d6fc4e5415901cb07ebdcb5b7387fc33e12e5ea94fb75abd24ed4a1533b4d607.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2039,10 +2025,10 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x11effd570&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x14038d540&gt;
 </pre></div>
 </div>
-<img alt="_images/1c8d52754a480ee471627981351c5ba38d4d7bae0cb83f4c0062305782e7df4e.png" src="_images/1c8d52754a480ee471627981351c5ba38d4d7bae0cb83f4c0062305782e7df4e.png" />
+<img alt="_images/ed10396cee6a4bad1f916e81d014390a018d88cfd65cf606b1ee74a89e74740b.png" src="_images/ed10396cee6a4bad1f916e81d014390a018d88cfd65cf606b1ee74a89e74740b.png" />
 </div>
 </div>
 <p>Let’s define a slightly more sophisticated plotting function that uses cartopy for the right <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/tutorials/understanding_transform.html">projection</a> with a rotated pole:</p>
@@ -2108,11 +2094,11 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline.zip
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline.zip
   warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
 </pre></div>
 </div>
-<img alt="_images/86fa33fe6ff47211cf0b9bbcea9f461e4b13efa1c06103500772a8d49c3baec0.png" src="_images/86fa33fe6ff47211cf0b9bbcea9f461e4b13efa1c06103500772a8d49c3baec0.png" />
+<img alt="_images/e42e829220e9e12b5e1ea010ac6711417085a611dc4f33b7d1480f5221d3ee7b.png" src="_images/e42e829220e9e12b5e1ea010ac6711417085a611dc4f33b7d1480f5221d3ee7b.png" />
 </div>
 </div>
 </section>
@@ -2171,9 +2157,9 @@ Name: EUR-11, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
@@ -2262,73 +2248,73 @@ Name: EUR-11, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:695: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:700: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   unused_keys = set(attribute.keys()) - set(inverted)
-/Users/runner/micromamba-root/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:696: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+/Users/runner/micromamba/envs/cordex-tutorials/lib/python3.10/site-packages/cf_xarray/accessor.py:701: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
   for key, value in attribute.items():
 </pre></div>
 </div>
-<img alt="_images/9e8f6036200953fe8217acb1cb20ad37eb1f3237e237e56ac40d09c2de43a4df.png" src="_images/9e8f6036200953fe8217acb1cb20ad37eb1f3237e237e56ac40d09c2de43a4df.png" />
+<img alt="_images/ba4d56a8e58018ed5917dbfb8454bf576223405eac84d6b564253dd0c0f55891.png" src="_images/ba4d56a8e58018ed5917dbfb8454bf576223405eac84d6b564253dd0c0f55891.png" />
 </div>
 </div>
 </section>
@@ -2343,27 +2329,25 @@ Name: EUR-11, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2024-08-08 11:09:17--  https://raw.githubusercontent.com/remo-rcm/pyremo-data/main/orog_fx_MPI-ESM1-2-HR_historical_r1i1p1f1_gn.nc
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2024-11-12 12:09:16--  https://raw.githubusercontent.com/remo-rcm/pyremo-data/main/orog_fx_MPI-ESM1-2-HR_historical_r1i1p1f1_gn.nc
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>185.199.110.133, 185.199.109.133, 185.199.108.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.110.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
 HTTP request sent, awaiting response... 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
-Length: 299137 (292K)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [application/octet-stream]
+Length: 299137 (292K) [application/octet-stream]
 Saving to: ‘orog_fx_MPI-ESM1-2-HR_historical_r1i1p1f1_gn.nc.1’
 
 
           orog_fx_M   0%[                    ]       0  --.-KB/s               
-orog_fx_MPI-ESM1-2- 100%[===================&gt;] 292.13K  --.-KB/s    in 0.01s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>orog_fx_MPI-ESM1-2- 100%[===================&gt;] 292.13K  --.-KB/s    in 0.005s  
 
-2024-08-08 11:09:17 (24.5 MB/s) - ‘orog_fx_MPI-ESM1-2-HR_historical_r1i1p1f1_gn.nc.1’ saved [299137/299137]
+2024-11-12 12:09:16 (59.4 MB/s) - ‘orog_fx_MPI-ESM1-2-HR_historical_r1i1p1f1_gn.nc.1’ saved [299137/299137]
 </pre></div>
 </div>
 </div>
@@ -2467,7 +2451,7 @@ body.vscode-dark {
 .xr-sections {
   padding-left: 0 !important;
   display: grid;
-  grid-template-columns: 150px auto auto 1fr 20px 20px;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
 }
 
 .xr-section-item {
@@ -2475,7 +2459,8 @@ body.vscode-dark {
 }
 
 .xr-section-item input {
-  display: none;
+  display: inline-block;
+  opacity: 0;
 }
 
 .xr-section-item input + label {
@@ -2485,6 +2470,10 @@ body.vscode-dark {
 .xr-section-item input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
 }
 
 .xr-section-item input:enabled + label:hover {
@@ -2772,7 +2761,7 @@ Attributes: (12/47)
     variable_id:            orog
     variant_label:          r1i1p1f1
     license:                CMIP6 model data produced by MPI-M is licensed un...
-    cmor_version:           3.5.0</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-e1297997-540b-4157-b251-8407686bda5b' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-e1297997-540b-4157-b251-8407686bda5b' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 192</li><li><span>bnds</span>: 2</li><li><span class='xr-has-index'>lon</span>: 384</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-f19a3bc3-335e-49b3-9e5e-3bbcb41caa1b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f19a3bc3-335e-49b3-9e5e-3bbcb41caa1b' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-89.28 -88.36 ... 88.36 89.28</div><input id='attrs-f5d29b16-258f-462a-8daf-cc859dc32c64' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f5d29b16-258f-462a-8daf-cc859dc32c64' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-615f2c56-d3d7-4f55-80ac-6599dc83c1d9' class='xr-var-data-in' type='checkbox'><label for='data-615f2c56-d3d7-4f55-80ac-6599dc83c1d9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>bounds :</span></dt><dd>lat_bnds</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>array([-89.284228, -88.357004, -87.424304, -86.490367, -85.55596 , -84.621327,
+    cmor_version:           3.5.0</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-454116e4-f617-410e-84c8-27434b9fbc73' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-454116e4-f617-410e-84c8-27434b9fbc73' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 192</li><li><span>bnds</span>: 2</li><li><span class='xr-has-index'>lon</span>: 384</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-34757c89-d010-4357-959d-c48530288b7c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-34757c89-d010-4357-959d-c48530288b7c' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-89.28 -88.36 ... 88.36 89.28</div><input id='attrs-52c9db1f-62d4-42a3-a68b-9bd829dd7f71' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-52c9db1f-62d4-42a3-a68b-9bd829dd7f71' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-06edc200-0f1b-48bc-85ec-5a579670fb4e' class='xr-var-data-in' type='checkbox'><label for='data-06edc200-0f1b-48bc-85ec-5a579670fb4e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>bounds :</span></dt><dd>lat_bnds</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>array([-89.284228, -88.357004, -87.424304, -86.490367, -85.55596 , -84.621327,
        -83.686567, -82.751728, -81.816839, -80.881913, -79.946962, -79.011992,
        -78.077007, -77.142011, -76.207005, -75.271992, -74.336973, -73.401949,
        -72.466921, -71.531889, -70.596854, -69.661816, -68.726776, -67.791734,
@@ -2803,7 +2792,7 @@ Attributes: (12/47)
         67.791734,  68.726776,  69.661816,  70.596854,  71.531889,  72.466921,
         73.401949,  74.336973,  75.271992,  76.207005,  77.142011,  78.077007,
         79.011992,  79.946962,  80.881913,  81.816839,  82.751728,  83.686567,
-        84.621327,  85.55596 ,  86.490367,  87.424304,  88.357004,  89.284228])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.9375 1.875 ... 358.1 359.1</div><input id='attrs-daabcde3-af2c-42d6-8699-b14da1422dc1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-daabcde3-af2c-42d6-8699-b14da1422dc1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-be6a7518-40ad-4abc-a1ab-200921f78d53' class='xr-var-data-in' type='checkbox'><label for='data-be6a7518-40ad-4abc-a1ab-200921f78d53' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>bounds :</span></dt><dd>lon_bnds</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([  0.    ,   0.9375,   1.875 , ..., 357.1875, 358.125 , 359.0625])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-93c2ddde-22bc-408a-80e2-5a57381bccd8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-93c2ddde-22bc-408a-80e2-5a57381bccd8' class='xr-section-summary' >Data variables: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>lat_bnds</span></div><div class='xr-var-dims'>(lat, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-caa6366b-ead3-4736-a743-9f54ce335a34' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-caa6366b-ead3-4736-a743-9f54ce335a34' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3b07703f-96b6-4129-986f-392de2901899' class='xr-var-data-in' type='checkbox'><label for='data-3b07703f-96b6-4129-986f-392de2901899' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[384 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon_bnds</span></div><div class='xr-var-dims'>(lon, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-6a96bca7-d840-4e25-871d-8f3e761f32a7' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-6a96bca7-d840-4e25-871d-8f3e761f32a7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-457beea0-2a28-4280-ac29-10cbd7183714' class='xr-var-data-in' type='checkbox'><label for='data-457beea0-2a28-4280-ac29-10cbd7183714' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[768 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>orog</span></div><div class='xr-var-dims'>(lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-634e5fe0-8ff9-4718-a7e2-ba405cf246ac' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-634e5fe0-8ff9-4718-a7e2-ba405cf246ac' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1cedc1d2-73b6-44d2-978c-f82194cda43a' class='xr-var-data-in' type='checkbox'><label for='data-1cedc1d2-73b6-44d2-978c-f82194cda43a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>surface_altitude</dd><dt><span>long_name :</span></dt><dd>Surface Altitude</dd><dt><span>comment :</span></dt><dd>The surface called &#x27;surface&#x27; means the lower boundary of the atmosphere. Altitude is the (geometric) height above the geoid, which is the reference geopotential surface. The geoid is similar to mean sea level.</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>original_name :</span></dt><dd>orog</dd><dt><span>cell_methods :</span></dt><dd>area: mean</dd><dt><span>cell_measures :</span></dt><dd>area: areacella</dd><dt><span>history :</span></dt><dd>2019-08-25T06:42:14Z altered by CMOR: replaced missing value flag (-9e+33) and corresponding data with standard missing value (1e+20). 2019-08-25T06:42:14Z altered by CMOR: Inverted axis: lat.</dd></dl></div><div class='xr-var-data'><pre>[73728 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-26c0e2e3-fda8-458d-bb06-816d232222c2' class='xr-section-summary-in' type='checkbox'  ><label for='section-26c0e2e3-fda8-458d-bb06-816d232222c2' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-c63eec09-df02-4580-a8e0-61ba8938c775' class='xr-index-data-in' type='checkbox'/><label for='index-c63eec09-df02-4580-a8e0-61ba8938c775' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-89.28422753251364, -88.35700351866494, -87.42430374606988,
+        84.621327,  85.55596 ,  86.490367,  87.424304,  88.357004,  89.284228])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.9375 1.875 ... 358.1 359.1</div><input id='attrs-f2a43415-3354-40b5-a3c7-23dfbea19ce9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f2a43415-3354-40b5-a3c7-23dfbea19ce9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b8127db7-ee49-4d56-9e97-60ec9964c6da' class='xr-var-data-in' type='checkbox'><label for='data-b8127db7-ee49-4d56-9e97-60ec9964c6da' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>bounds :</span></dt><dd>lon_bnds</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([  0.    ,   0.9375,   1.875 , ..., 357.1875, 358.125 , 359.0625])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-89fe26e4-f436-416b-881a-1f2aae11d476' class='xr-section-summary-in' type='checkbox'  checked><label for='section-89fe26e4-f436-416b-881a-1f2aae11d476' class='xr-section-summary' >Data variables: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>lat_bnds</span></div><div class='xr-var-dims'>(lat, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a93eb57e-e4c2-4fec-a318-5fd6e38b16a3' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-a93eb57e-e4c2-4fec-a318-5fd6e38b16a3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bad3b35d-627c-4123-b9aa-370e6bed77ad' class='xr-var-data-in' type='checkbox'><label for='data-bad3b35d-627c-4123-b9aa-370e6bed77ad' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[384 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon_bnds</span></div><div class='xr-var-dims'>(lon, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-157a85dd-0477-4a92-a04d-05ebbc5dbf1f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-157a85dd-0477-4a92-a04d-05ebbc5dbf1f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b16d7440-9d38-4a66-8375-6eb8e2ec4874' class='xr-var-data-in' type='checkbox'><label for='data-b16d7440-9d38-4a66-8375-6eb8e2ec4874' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[768 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>orog</span></div><div class='xr-var-dims'>(lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-270ce347-69c2-42fb-881c-0c741a8d30f3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-270ce347-69c2-42fb-881c-0c741a8d30f3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6a26f1af-1cee-4f76-ac2b-ebb644e708cb' class='xr-var-data-in' type='checkbox'><label for='data-6a26f1af-1cee-4f76-ac2b-ebb644e708cb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>surface_altitude</dd><dt><span>long_name :</span></dt><dd>Surface Altitude</dd><dt><span>comment :</span></dt><dd>The surface called &#x27;surface&#x27; means the lower boundary of the atmosphere. Altitude is the (geometric) height above the geoid, which is the reference geopotential surface. The geoid is similar to mean sea level.</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>original_name :</span></dt><dd>orog</dd><dt><span>cell_methods :</span></dt><dd>area: mean</dd><dt><span>cell_measures :</span></dt><dd>area: areacella</dd><dt><span>history :</span></dt><dd>2019-08-25T06:42:14Z altered by CMOR: replaced missing value flag (-9e+33) and corresponding data with standard missing value (1e+20). 2019-08-25T06:42:14Z altered by CMOR: Inverted axis: lat.</dd></dl></div><div class='xr-var-data'><pre>[73728 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-28858d09-a97f-4b98-a9d6-e413eaa5d877' class='xr-section-summary-in' type='checkbox'  ><label for='section-28858d09-a97f-4b98-a9d6-e413eaa5d877' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-8763e128-283b-4478-9768-48fcfa5146ac' class='xr-index-data-in' type='checkbox'/><label for='index-8763e128-283b-4478-9768-48fcfa5146ac' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-89.28422753251364, -88.35700351866494, -87.42430374606988,
        -86.49036676628116, -85.55596048489265,  -84.6213271076488,
        -83.68656681656385, -82.75172847343066, -81.81683872860322,
         -80.8819133467975,
@@ -2812,12 +2801,12 @@ Attributes: (12/47)
         83.68656681656385,   84.6213271076488,  85.55596048489265,
         86.49036676628116,  87.42430374606988,  88.35700351866494,
         89.28422753251364],
-      dtype=&#x27;float64&#x27;, name=&#x27;lat&#x27;, length=192))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-e09bbe8b-a1e7-429f-81b3-1dca286ea84a' class='xr-index-data-in' type='checkbox'/><label for='index-e09bbe8b-a1e7-429f-81b3-1dca286ea84a' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([     0.0,   0.9375,    1.875,   2.8125,     3.75,   4.6875,    5.625,
+      dtype=&#x27;float64&#x27;, name=&#x27;lat&#x27;, length=192))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-1fa2c5be-95eb-4270-929a-0ee1b9c00196' class='xr-index-data-in' type='checkbox'/><label for='index-1fa2c5be-95eb-4270-929a-0ee1b9c00196' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([     0.0,   0.9375,    1.875,   2.8125,     3.75,   4.6875,    5.625,
          6.5625,      7.5,   8.4375,
        ...
         350.625, 351.5625,    352.5, 353.4375,  354.375, 355.3125,   356.25,
        357.1875,  358.125, 359.0625],
-      dtype=&#x27;float64&#x27;, name=&#x27;lon&#x27;, length=384))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-fd4caf12-9583-477e-b035-2f2884d7a259' class='xr-section-summary-in' type='checkbox'  ><label for='section-fd4caf12-9583-477e-b035-2f2884d7a259' class='xr-section-summary' >Attributes: <span>(47)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.7 CMIP-6.2</dd><dt><span>activity_id :</span></dt><dd>CMIP</dd><dt><span>branch_method :</span></dt><dd>standard</dd><dt><span>branch_time_in_child :</span></dt><dd>0.0</dd><dt><span>branch_time_in_parent :</span></dt><dd>0.0</dd><dt><span>contact :</span></dt><dd>cmip6-mpi-esm@dkrz.de</dd><dt><span>creation_date :</span></dt><dd>2019-08-25T06:42:14Z</dd><dt><span>data_specs_version :</span></dt><dd>01.00.30</dd><dt><span>experiment :</span></dt><dd>all-forcing simulation of the recent past</dd><dt><span>experiment_id :</span></dt><dd>historical</dd><dt><span>external_variables :</span></dt><dd>areacella</dd><dt><span>forcing_index :</span></dt><dd>1</dd><dt><span>frequency :</span></dt><dd>fx</dd><dt><span>further_info_url :</span></dt><dd>https://furtherinfo.es-doc.org/CMIP6.MPI-M.MPI-ESM1-2-HR.historical.none.r1i1p1f1</dd><dt><span>grid :</span></dt><dd>gn</dd><dt><span>grid_label :</span></dt><dd>gn</dd><dt><span>history :</span></dt><dd>2019-08-25T06:42:14Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.</dd><dt><span>initialization_index :</span></dt><dd>1</dd><dt><span>institution :</span></dt><dd>Max Planck Institute for Meteorology, Hamburg 20146, Germany</dd><dt><span>institution_id :</span></dt><dd>MPI-M</dd><dt><span>mip_era :</span></dt><dd>CMIP6</dd><dt><span>nominal_resolution :</span></dt><dd>100 km</dd><dt><span>parent_activity_id :</span></dt><dd>CMIP</dd><dt><span>parent_experiment_id :</span></dt><dd>piControl</dd><dt><span>parent_mip_era :</span></dt><dd>CMIP6</dd><dt><span>parent_source_id :</span></dt><dd>MPI-ESM1-2-HR</dd><dt><span>parent_time_units :</span></dt><dd>days since 1850-1-1 00:00:00</dd><dt><span>parent_variant_label :</span></dt><dd>r1i1p1f1</dd><dt><span>physics_index :</span></dt><dd>1</dd><dt><span>product :</span></dt><dd>model-output</dd><dt><span>project_id :</span></dt><dd>CMIP6</dd><dt><span>realization_index :</span></dt><dd>1</dd><dt><span>realm :</span></dt><dd>land</dd><dt><span>references :</span></dt><dd>MPI-ESM: Mauritsen, T. et al. (2019), Developments in the MPI‐M Earth System Model version 1.2 (MPI‐ESM1.2) and Its Response to Increasing CO2, J. Adv. Model. Earth Syst.,11, 998-1038, doi:10.1029/2018MS001400,
+      dtype=&#x27;float64&#x27;, name=&#x27;lon&#x27;, length=384))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-6ed2f7d9-bd15-4f6a-ba1a-7bb82d359de5' class='xr-section-summary-in' type='checkbox'  ><label for='section-6ed2f7d9-bd15-4f6a-ba1a-7bb82d359de5' class='xr-section-summary' >Attributes: <span>(47)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.7 CMIP-6.2</dd><dt><span>activity_id :</span></dt><dd>CMIP</dd><dt><span>branch_method :</span></dt><dd>standard</dd><dt><span>branch_time_in_child :</span></dt><dd>0.0</dd><dt><span>branch_time_in_parent :</span></dt><dd>0.0</dd><dt><span>contact :</span></dt><dd>cmip6-mpi-esm@dkrz.de</dd><dt><span>creation_date :</span></dt><dd>2019-08-25T06:42:14Z</dd><dt><span>data_specs_version :</span></dt><dd>01.00.30</dd><dt><span>experiment :</span></dt><dd>all-forcing simulation of the recent past</dd><dt><span>experiment_id :</span></dt><dd>historical</dd><dt><span>external_variables :</span></dt><dd>areacella</dd><dt><span>forcing_index :</span></dt><dd>1</dd><dt><span>frequency :</span></dt><dd>fx</dd><dt><span>further_info_url :</span></dt><dd>https://furtherinfo.es-doc.org/CMIP6.MPI-M.MPI-ESM1-2-HR.historical.none.r1i1p1f1</dd><dt><span>grid :</span></dt><dd>gn</dd><dt><span>grid_label :</span></dt><dd>gn</dd><dt><span>history :</span></dt><dd>2019-08-25T06:42:14Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.</dd><dt><span>initialization_index :</span></dt><dd>1</dd><dt><span>institution :</span></dt><dd>Max Planck Institute for Meteorology, Hamburg 20146, Germany</dd><dt><span>institution_id :</span></dt><dd>MPI-M</dd><dt><span>mip_era :</span></dt><dd>CMIP6</dd><dt><span>nominal_resolution :</span></dt><dd>100 km</dd><dt><span>parent_activity_id :</span></dt><dd>CMIP</dd><dt><span>parent_experiment_id :</span></dt><dd>piControl</dd><dt><span>parent_mip_era :</span></dt><dd>CMIP6</dd><dt><span>parent_source_id :</span></dt><dd>MPI-ESM1-2-HR</dd><dt><span>parent_time_units :</span></dt><dd>days since 1850-1-1 00:00:00</dd><dt><span>parent_variant_label :</span></dt><dd>r1i1p1f1</dd><dt><span>physics_index :</span></dt><dd>1</dd><dt><span>product :</span></dt><dd>model-output</dd><dt><span>project_id :</span></dt><dd>CMIP6</dd><dt><span>realization_index :</span></dt><dd>1</dd><dt><span>realm :</span></dt><dd>land</dd><dt><span>references :</span></dt><dd>MPI-ESM: Mauritsen, T. et al. (2019), Developments in the MPI‐M Earth System Model version 1.2 (MPI‐ESM1.2) and Its Response to Increasing CO2, J. Adv. Model. Earth Syst.,11, 998-1038, doi:10.1029/2018MS001400,
 Mueller, W.A. et al. (2018): A high‐resolution version of the Max Planck Institute Earth System Model MPI‐ESM1.2‐HR. J. Adv. Model. EarthSyst.,10,1383–1413, doi:10.1029/2017MS001217</dd><dt><span>source :</span></dt><dd>MPI-ESM1.2-HR (2017): 
 aerosol: none, prescribed MACv2-SP
 atmos: ECHAM6.3 (spectral T127; 384 x 192 longitude/latitude; 95 levels; top level 0.01 hPa)
@@ -2932,7 +2921,7 @@ body.vscode-dark {
 .xr-sections {
   padding-left: 0 !important;
   display: grid;
-  grid-template-columns: 150px auto auto 1fr 20px 20px;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
 }
 
 .xr-section-item {
@@ -2940,7 +2929,8 @@ body.vscode-dark {
 }
 
 .xr-section-item input {
-  display: none;
+  display: inline-block;
+  opacity: 0;
 }
 
 .xr-section-item input + label {
@@ -2950,6 +2940,10 @@ body.vscode-dark {
 .xr-section-item input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
 }
 
 .xr-section-item input:enabled + label:hover {
@@ -3230,17 +3224,17 @@ Attributes:
     original_name:  orog
     cell_methods:   area: mean
     cell_measures:  area: areacella
-    history:        2019-08-25T06:42:14Z altered by CMOR: replaced missing va...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'orog'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>rlat</span>: 412</li><li><span class='xr-has-index'>rlon</span>: 424</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-1bd31361-6761-4068-9f42-8f8c37e01230' class='xr-array-in' type='checkbox' checked><label for='section-1bd31361-6761-4068-9f42-8f8c37e01230' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>...</span></div><div class='xr-array-data'><pre>[174688 values with dtype=float32]</pre></div></div></li><li class='xr-section-item'><input id='section-20c12102-822f-4c42-9a4e-b8480409022c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-20c12102-822f-4c42-9a4e-b8480409022c' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a7cbe332-bc58-4c33-9bcf-3628baf7aa12' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a7cbe332-bc58-4c33-9bcf-3628baf7aa12' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b8364cae-5750-40ef-8225-d85373f332f7' class='xr-var-data-in' type='checkbox'><label for='data-b8364cae-5750-40ef-8225-d85373f332f7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Lon</dd></dl></div><div class='xr-var-data'><pre>[174688 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-02f129f3-83bc-4361-bc1a-8bf947b931da' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-02f129f3-83bc-4361-bc1a-8bf947b931da' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-63f6d75a-aa12-476d-a6c1-954b994f0133' class='xr-var-data-in' type='checkbox'><label for='data-63f6d75a-aa12-476d-a6c1-954b994f0133' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Lat</dd></dl></div><div class='xr-var-data'><pre>[174688 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlon</span></div><div class='xr-var-dims'>(rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-28.38 -28.27 ... 18.05 18.16</div><input id='attrs-88620cd7-819e-4929-832f-bd255dd238a3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-88620cd7-819e-4929-832f-bd255dd238a3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-491e47b2-bbe4-48ad-83bc-2d6225959a21' class='xr-var-data-in' type='checkbox'><label for='data-491e47b2-bbe4-48ad-83bc-2d6225959a21' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>long_name :</span></dt><dd>longitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>X</dd></dl></div><div class='xr-var-data'><pre>array([-28.375, -28.265, -28.155, ...,  17.935,  18.045,  18.155])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlat</span></div><div class='xr-var-dims'>(rlat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-23.38 -23.27 ... 21.73 21.84</div><input id='attrs-d7dca43d-5510-41fa-91e6-4c1dd8c9e628' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d7dca43d-5510-41fa-91e6-4c1dd8c9e628' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8a637b54-247c-4355-a77c-b5a353f1145b' class='xr-var-data-in' type='checkbox'><label for='data-8a637b54-247c-4355-a77c-b5a353f1145b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>long_name :</span></dt><dd>latitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>Y</dd></dl></div><div class='xr-var-data'><pre>array([-23.375, -23.265, -23.155, ...,  21.615,  21.725,  21.835])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ab84c5bc-fe2d-43bc-8bc2-ce5ba9885dda' class='xr-section-summary-in' type='checkbox'  ><label for='section-ab84c5bc-fe2d-43bc-8bc2-ce5ba9885dda' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>rlon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-de9ee22a-996d-41ed-bf80-e20f5a020f74' class='xr-index-data-in' type='checkbox'/><label for='index-de9ee22a-996d-41ed-bf80-e20f5a020f74' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-28.375, -28.265, -28.155, -28.045, -27.935, -27.825, -27.715, -27.605,
+    history:        2019-08-25T06:42:14Z altered by CMOR: replaced missing va...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'orog'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>rlat</span>: 412</li><li><span class='xr-has-index'>rlon</span>: 424</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-7ec4788e-7435-4e34-9917-5556416a6870' class='xr-array-in' type='checkbox' checked><label for='section-7ec4788e-7435-4e34-9917-5556416a6870' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>...</span></div><div class='xr-array-data'><pre>[174688 values with dtype=float32]</pre></div></div></li><li class='xr-section-item'><input id='section-3137bf2a-f512-4e7f-ae65-c9077b61b43f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3137bf2a-f512-4e7f-ae65-c9077b61b43f' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-08607700-d7d5-4459-8fdb-85a34edd6eb4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-08607700-d7d5-4459-8fdb-85a34edd6eb4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f1bb44e2-7278-4e24-a95c-0b2c2a732ca7' class='xr-var-data-in' type='checkbox'><label for='data-f1bb44e2-7278-4e24-a95c-0b2c2a732ca7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Lon</dd></dl></div><div class='xr-var-data'><pre>[174688 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-144ebc06-ad89-4ae1-9973-a20988781e28' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-144ebc06-ad89-4ae1-9973-a20988781e28' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5b06be48-8b1c-40d9-b2a0-352a141b336a' class='xr-var-data-in' type='checkbox'><label for='data-5b06be48-8b1c-40d9-b2a0-352a141b336a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Lat</dd></dl></div><div class='xr-var-data'><pre>[174688 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlon</span></div><div class='xr-var-dims'>(rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-28.38 -28.27 ... 18.05 18.16</div><input id='attrs-fa24110b-0d95-45c1-9331-a43575a1457b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fa24110b-0d95-45c1-9331-a43575a1457b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9ac54f3f-6a1f-420e-8e30-7a524f8c223e' class='xr-var-data-in' type='checkbox'><label for='data-9ac54f3f-6a1f-420e-8e30-7a524f8c223e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>long_name :</span></dt><dd>longitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>X</dd></dl></div><div class='xr-var-data'><pre>array([-28.375, -28.265, -28.155, ...,  17.935,  18.045,  18.155])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlat</span></div><div class='xr-var-dims'>(rlat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-23.38 -23.27 ... 21.73 21.84</div><input id='attrs-83ff58a1-4e8b-4b74-bf4b-42f8488a263f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-83ff58a1-4e8b-4b74-bf4b-42f8488a263f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b333066a-e2ca-47b2-bf4d-ce745da008a3' class='xr-var-data-in' type='checkbox'><label for='data-b333066a-e2ca-47b2-bf4d-ce745da008a3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>long_name :</span></dt><dd>latitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>Y</dd></dl></div><div class='xr-var-data'><pre>array([-23.375, -23.265, -23.155, ...,  21.615,  21.725,  21.835])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-b2fab2ba-c0f6-4e3f-b007-c0693912a160' class='xr-section-summary-in' type='checkbox'  ><label for='section-b2fab2ba-c0f6-4e3f-b007-c0693912a160' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>rlon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-1da003ca-1405-4bb9-b536-854cafa87946' class='xr-index-data-in' type='checkbox'/><label for='index-1da003ca-1405-4bb9-b536-854cafa87946' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-28.375, -28.265, -28.155, -28.045, -27.935, -27.825, -27.715, -27.605,
        -27.495, -27.385,
        ...
         17.165,  17.275,  17.385,  17.495,  17.605,  17.715,  17.825,  17.935,
         18.045,  18.155],
-      dtype=&#x27;float64&#x27;, name=&#x27;rlon&#x27;, length=424))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rlat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-a9754ccf-542e-4f25-8470-6c96c2f9e0eb' class='xr-index-data-in' type='checkbox'/><label for='index-a9754ccf-542e-4f25-8470-6c96c2f9e0eb' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-23.375, -23.265, -23.155, -23.045, -22.935, -22.825, -22.715, -22.605,
+      dtype=&#x27;float64&#x27;, name=&#x27;rlon&#x27;, length=424))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rlat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-2dd115f8-4ded-47e7-bc27-159f6afaea54' class='xr-index-data-in' type='checkbox'/><label for='index-2dd115f8-4ded-47e7-bc27-159f6afaea54' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-23.375, -23.265, -23.155, -23.045, -22.935, -22.825, -22.715, -22.605,
        -22.495, -22.385,
        ...
         20.845,  20.955,  21.065,  21.175,  21.285,  21.395,  21.505,  21.615,
         21.725,  21.835],
-      dtype=&#x27;float64&#x27;, name=&#x27;rlat&#x27;, length=412))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3fa3363f-00a1-406d-b8c2-6b5c8f9396ea' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3fa3363f-00a1-406d-b8c2-6b5c8f9396ea' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>surface_altitude</dd><dt><span>long_name :</span></dt><dd>Surface Altitude</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>grid_mapping :</span></dt><dd>rotated_latitude_longitude</dd><dt><span>comment :</span></dt><dd>The surface called &#x27;surface&#x27; means the lower boundary of the atmosphere. Altitude is the (geometric) height above the geoid, which is the reference geopotential surface. The geoid is similar to mean sea level.</dd><dt><span>original_name :</span></dt><dd>orog</dd><dt><span>cell_methods :</span></dt><dd>area: mean</dd><dt><span>cell_measures :</span></dt><dd>area: areacella</dd><dt><span>history :</span></dt><dd>2019-08-25T06:42:14Z altered by CMOR: replaced missing value flag (-9e+33) and corresponding data with standard missing value (1e+20). 2019-08-25T06:42:14Z altered by CMOR: Inverted axis: lat.</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;float64&#x27;, name=&#x27;rlat&#x27;, length=412))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e5113874-3943-40c1-864d-6e1964c4e4f3' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e5113874-3943-40c1-864d-6e1964c4e4f3' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>surface_altitude</dd><dt><span>long_name :</span></dt><dd>Surface Altitude</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>grid_mapping :</span></dt><dd>rotated_latitude_longitude</dd><dt><span>comment :</span></dt><dd>The surface called &#x27;surface&#x27; means the lower boundary of the atmosphere. Altitude is the (geometric) height above the geoid, which is the reference geopotential surface. The geoid is similar to mean sea level.</dd><dt><span>original_name :</span></dt><dd>orog</dd><dt><span>cell_methods :</span></dt><dd>area: mean</dd><dt><span>cell_measures :</span></dt><dd>area: areacella</dd><dt><span>history :</span></dt><dd>2019-08-25T06:42:14Z altered by CMOR: replaced missing value flag (-9e+33) and corresponding data with standard missing value (1e+20). 2019-08-25T06:42:14Z altered by CMOR: Inverted axis: lat.</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3249,10 +3243,10 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x11f88e9b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x140b71c60&gt;
 </pre></div>
 </div>
-<img alt="_images/b15f4a46f16d7997f3f168224a6fcaaa348ed72c33d5f04e2eddaefbd1f959e8.png" src="_images/b15f4a46f16d7997f3f168224a6fcaaa348ed72c33d5f04e2eddaefbd1f959e8.png" />
+<img alt="_images/3a2ddbf56072e96880ce08a8fd76bb7952dc93321f01bf4af3d81248dae82b83.png" src="_images/3a2ddbf56072e96880ce08a8fd76bb7952dc93321f01bf4af3d81248dae82b83.png" />
 </div>
 </div>
 </section>
@@ -3299,10 +3293,10 @@ Periodic in longitude?      True
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x11efb1720&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x1423987f0&gt;
 </pre></div>
 </div>
-<img alt="_images/f3a5fc4e3056c963a0c586dcb629d23c667c71e43e9cdeb934fbb58c5148103a.png" src="_images/f3a5fc4e3056c963a0c586dcb629d23c667c71e43e9cdeb934fbb58c5148103a.png" />
+<img alt="_images/4c16c5c24b763e8362874e956340463d9d2dcedaadeb84a68b853686b27955a4.png" src="_images/4c16c5c24b763e8362874e956340463d9d2dcedaadeb84a68b853686b27955a4.png" />
 </div>
 </div>
 <p>We can easily compare both approaches</p>
@@ -3313,10 +3307,10 @@ Periodic in longitude?      True
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x1208c3b50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x14253d000&gt;
 </pre></div>
 </div>
-<img alt="_images/e9c3733507be5ee9dfdb692faee852c8574c9fcca063bf0fe6c2b8a64c5697a5.png" src="_images/e9c3733507be5ee9dfdb692faee852c8574c9fcca063bf0fe6c2b8a64c5697a5.png" />
+<img alt="_images/48c53f065e68578db6e9eace4d35ab1c12c71c05d062a6f3f77cedeefa2898ed.png" src="_images/48c53f065e68578db6e9eace4d35ab1c12c71c05d062a6f3f77cedeefa2898ed.png" />
 </div>
 </div>
 <p>The nice thing about <code class="docutils literal notranslate"><span class="pre">xesmf</span></code> is that it works together with xarray and will keep all meta information. Another consequence is that <code class="docutils literal notranslate"><span class="pre">xesmf</span></code> <a class="reference external" href="https://pangeo-xesmf.readthedocs.io/en/latest/notebooks/Dask.html">works well with dask</a> and it’s vectorization. That means, if we have a long time axis along we want to regrid, this can easily be parallelized using, e.g., <code class="docutils literal notranslate"><span class="pre">dask.distributed</span></code> and will also work nicely with large datasets that don’t fit into memory. The <code class="docutils literal notranslate"><span class="pre">xesmf</span></code> regridder can also store and reuse regridding weights for faster interpolation.</p>
@@ -3379,7 +3373,8 @@ Periodic in longitude?      True
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -3445,8 +3440,8 @@ By Lars Buntemeyer
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>
